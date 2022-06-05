@@ -47,7 +47,7 @@ There are a few environment variables that need to be set in Heroku config var:
 
 Once Strapi is deployed you need to fill in the data, give read access to the public role to every endpoint.
 
-Finally you need to setup the webhook callback for [Incremental static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) to the Next.js app.
+Finally you need to setup the webhook callback for [Incremental static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration) to the Next.js app. The callback url should be https://moonalps.vercel.app/api/revalidate?secret=<secret> and trigger on every event from Strapi.
 
 ## Additional docs
 

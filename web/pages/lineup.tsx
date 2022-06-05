@@ -46,7 +46,9 @@ const Lineup: NextPage<IProps> = ({ bands, general }: IProps) => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="col-span-2 sm:col-span-1">
-                    <Image src={`${URL}${band.attributes.image?.data.attributes.url}`} alt="Logo" width="100%" height="500rem" />
+                    <img src={`${band.attributes.image?.data.attributes.url}`}
+                      alt="Logo"
+                      className="w-96" />
                   </div>
                   <div className="col-span-3 sm:col-span-2">
                     <p>{band.attributes.description}</p>

@@ -16,6 +16,7 @@ type IProps = {
 export async function getStaticProps(context: any) {
   const res = await fetch(`${URL}/api/sponsors?populate=*`);
   const { data: sponsors } = await res.json();
+  console.log(JSON.stringify(sponsors[0].attributes.logo));
 
   const res2 = await fetch(`${URL}/api/partners?populate=*`);
   const { data: partners } = await res2.json();
@@ -188,11 +189,10 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                     target="_blank"
                     className="flex flex-col justify-center items-center"
                   >
-                    <Image
-                      src={`${URL}${sponsor.attributes.logo.data.attributes.url}`}
+                    <img
+                      src={`${sponsor.attributes.logo.data.attributes.url}`}
                       alt={sponsor.attributes.name}
-                      height="200rem"
-                      width="200rem"
+                      className="w-96"
                     />
                     <p className="text-primary text-sm">
                       {sponsor.attributes.name}
@@ -226,11 +226,10 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                     target="_blank"
                     className="flex flex-col justify-center items-center"
                   >
-                    <Image
-                      src={`${URL}${partner.attributes.logo.data.attributes.url}`}
+                    <img
+                      src={`${partner.attributes.logo.data.attributes.url}`}
                       alt={partner.attributes.name}
-                      height="200rem"
-                      width="200rem"
+                      className="w-96"
                     />
                     <p className="text-primary text-sm">
                       {partner.attributes.name}

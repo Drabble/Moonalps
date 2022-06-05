@@ -1,6 +1,6 @@
 # Moonalps - Web frontend
 
-The frontend of Moonalps is a Next.js application (runs on top of React). It interacts with the Strapi (headless CMS) backend to load data.
+The frontend of Moonalps is a Next.js application (runs on top of React). It interacts with the Strapi (headless CMS) backend to load data. It has [on-demand revalidation](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#using-on-demand-revalidation) triggered by a webhook in Strapi. Make sure you set the correct paths in `/pages/api/revalidate.ts`.
 
 ## Getting Started
 
@@ -18,6 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 The application is deployed on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+When deploying the application make sure to set the two following env. variables in Vercel:
+
+- **REVALIDATE_SECRET** - allows us to call https://<your-site.com>/api/revalidate?secret= to revalidate with the secret
+- **STRAPI_URL** - url to access Strapi
 
 ## Additional docs
 
