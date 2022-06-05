@@ -33,7 +33,12 @@ Values for these variables are found on the Cloudinary dashboard page.
 
 Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
 
-We currently deploy on Heroku.
+We currently deploy on Heroku. Install the heroku CLI, login and then:
+
+```bash
+heroku git:remote -a my-new-app-name # add heroku remote
+git subtree push --prefix cms heroku master # deploy the cms subfolder to heroku main
+```
 
 ## Additional docs
 
