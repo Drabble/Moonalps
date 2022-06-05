@@ -1,28 +1,43 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { IHome, Igallery } from '../types';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { IGeneral, IGallery, IImage } from '../types';
 import Layout from '../components/Layout';
-import Moment from 'react-moment';
 import 'moment/locale/fr';
 import Masonry from 'react-masonry-css';
 
-type IProps = {
-  galleries: Igallery[],
-  home: IHome,
+const URL = process.env.STRAPIBASEURL;
+
+export async function getStaticProps() {
+  const res = await fetch(`${URL}/api/galleries?populate=*`);
+  const { data: galleries } = await res.json();
+
+  const res3 = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await res3.json();
+
+  return {
+    props: { galleries, general }
+  }
 }
-const Home: NextPage<IProps> = ({ galleries, home }: IProps) => {
+
+type IProps = {
+  galleries: IGallery[],
+  general: IGeneral,
+}
+
+const Gallery: NextPage<IProps> = ({ galleries, general }: IProps) => {
   return (
-    <Layout home={home}>
+    <Layout general={general}>
       <div>
         <Head>
-          <title>Moonalps Festival</title>
-          <meta name="description" content="Moonalps Festival à Bursins, Suisse" />
-          <link rel="icon" href="/favicon.ico" />
+          <title>{general?.attributes.metaTitle}</title>
+          <meta
+            name="description"
+            content={general?.attributes.metaDescription}
+          />
         </Head>
 
         <main className="w-full flex flex-col p-4">
-
-
           <div className="flex flex-col gap-2 justify-center">
             {galleries.map((gallery, i) =>
               <div key={i} className="w-full p-4">
@@ -36,17 +51,15 @@ const Home: NextPage<IProps> = ({ galleries, home }: IProps) => {
                   className="my-masonry-grid"
                   columnClassName="my-masonry-grid_column">
                   {
-                    gallery.attributes.pictures.data.map((picture, j) => (
-                      <div className="col-span-2" key={j}>
-                        <img src={`http://127.0.0.1:1337${picture.attributes.url}`} />
+                    gallery.attributes.pictures.data.map((picture: IImage, j: Number) => (
+                      <div className="col-span-2" key={j.toString()}>
+                        <Image src={`${URL}${picture.attributes.url}`} alt="Photo" width="400rem" height="400rem" />
                       </div>
                     ))
                   }
                 </Masonry>
-
               </div>
             )}
-
           </div>
         </main>
       </div>
@@ -54,18 +67,5 @@ const Home: NextPage<IProps> = ({ galleries, home }: IProps) => {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:1337/api/galleries?populate=*");
-  const { data: galleries } = await res.json();
 
-  const res3 = await fetch("http://127.0.0.1:1337/api/home?populate=*");
-  const { data: home } = await res3.json();
-
-  console.log(JSON.stringify(galleries));
-
-  return {
-    props: { galleries, home }
-  }
-}
-
-export default Home
+export default Gallery;

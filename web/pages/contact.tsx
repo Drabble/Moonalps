@@ -1,20 +1,34 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { IHome, IPost } from '../types';
+import { IGeneral, IPost } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
 
-type IProps = {
-  home: IHome,
+const URL = process.env.STRAPIBASEURL;
+
+export async function getStaticProps() {
+  const res = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await res.json();
+
+  return {
+    props: { general }
+  }
 }
-const Home: NextPage<IProps> = ({ home }: IProps) => {
+
+type IProps = {
+  general: IGeneral,
+}
+
+const Contact: NextPage<IProps> = ({ general }: IProps) => {
   return (
-    <Layout home={home}>
+    <Layout general={general}>
       <div>
         <Head>
-          <title>Moonalps Festival</title>
-          <meta name="description" content="Moonalps Festival à Bursins, Suisse" />
-          <link rel="icon" href="/favicon.ico" />
+          <title>{general?.attributes.metaTitle}</title>
+          <meta
+            name="description"
+            content={general?.attributes.metaDescription}
+          />
         </Head>
 
         <main className="p-4">
@@ -50,14 +64,17 @@ const Home: NextPage<IProps> = ({ home }: IProps) => {
             <div className="text-lg flex flex-col gap-2 p-4 border-black">
               <h1>Contact</h1>
               <p>
-                <span className="font-bold">Email</span><br /><a itemProp="email" href="mailto:info@moonalps.ch">info@moonalps.ch</a> <br />
+                <span className="font-bold">Email</span><br /><a itemProp="email" href={`mailto:${general?.attributes.contactEmail}`}>
+                  {general?.attributes.contactEmail}
+                </a> <br />
               </p>
-              <p><span className="font-bold">Téléphone</span><br /><a href="tel:+41 79 265 18 27">+41 79 265 18 27</a></p>
+              <p><span className="font-bold">Téléphone</span><br /><a href={`tel:${general?.attributes.contactPhone}`}>{general?.attributes.contactPhone}</a></p>
 
-
-              <p><span className="font-bold">Postulation</span><br /><a itemProp="email" href="mailto:booking@moonalps.ch">booking@moonalps.ch</a></p>
+              <a itemProp="email" href={`mailto:${general?.attributes.postulationEmail}`}>
+                {general?.attributes.postulationEmail}
+              </a>
               <p><span className="font-bold">Président</span><br />
-                Loïc Cattin</p>
+                {general?.attributes.president}</p>
             </div>
           </div>
         </main>
@@ -66,13 +83,4 @@ const Home: NextPage<IProps> = ({ home }: IProps) => {
   )
 }
 
-export async function getStaticProps() {
-  const res3 = await fetch("http://127.0.0.1:1337/api/home?populate=*");
-  const { data: home } = await res3.json();
-
-  return {
-    props: { home }
-  }
-}
-
-export default Home
+export default Contact;

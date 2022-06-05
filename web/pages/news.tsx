@@ -1,22 +1,40 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { IHome, IPost } from '../types';
+import Image from "next/image";
+import { IGeneral, IPost } from '../types';
 import Layout from '../components/Layout';
 import Moment from 'react-moment';
-//import 'moment/locale/fr';
+import 'moment/locale/fr';
+
+const URL = process.env.STRAPIBASEURL;
+
+export async function getStaticProps() {
+  const res = await fetch(`${URL}/api/posts?populate=*`);
+  const { data: posts } = await res.json();
+
+  const res3 = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await res3.json();
+
+  return {
+    props: { posts, general }
+  }
+}
 
 type IProps = {
   posts: IPost[],
-  home: IHome,
+  general: IGeneral,
 }
-const Home: NextPage<IProps> = ({ posts, home }: IProps) => {
+
+const News: NextPage<IProps> = ({ posts, general }: IProps) => {
   return (
-    <Layout home={home}>
+    <Layout general={general}>
       <div>
         <Head>
-          <title>Moonalps Festival</title>
-          <meta name="description" content="Moonalps Festival à Bursins, Suisse" />
-          <link rel="icon" href="/favicon.ico" />
+          <title>{general?.attributes.metaTitle}</title>
+          <meta
+            name="description"
+            content={general?.attributes.metaDescription}
+          />
         </Head>
 
         <main className="w-full flex flex-col p-4">
@@ -30,7 +48,7 @@ const Home: NextPage<IProps> = ({ posts, home }: IProps) => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="col-span-1">
-                    <img src={`http://127.0.0.1:1337${post.attributes.image?.data.attributes.url}`} className="w-full" />
+                    <Image src={`${URL}${post.attributes.image?.data.attributes.url}`} alt="Vignette" height="500rem" width="100%" />
                   </div>
                   <div className="col-span-2">
                     <p>{post.attributes.content}</p>
@@ -51,16 +69,4 @@ const Home: NextPage<IProps> = ({ posts, home }: IProps) => {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:1337/api/posts?populate=*");
-  const { data: posts } = await res.json();
-
-  const res3 = await fetch("http://127.0.0.1:1337/api/home?populate=*");
-  const { data: home } = await res3.json();
-
-  return {
-    props: { posts, home }
-  }
-}
-
-export default Home
+export default News

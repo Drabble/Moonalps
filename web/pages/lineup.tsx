@@ -1,22 +1,38 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { IHome, IBand } from '../types';
+import Image from 'next/image'
+import { IGeneral, IBand } from '../types';
 import Layout from '../components/Layout';
-import Moment from 'react-moment';
-import 'moment/locale/fr';
+
+const URL = process.env.STRAPIBASEURL;
+
+export async function getStaticProps() {
+  const res = await fetch(`${URL}/api/bands?populate=*`);
+  const { data: bands } = await res.json();
+
+  const res3 = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await res3.json();
+
+  return {
+    props: { bands, general }
+  }
+}
 
 type IProps = {
   bands: IBand[],
-  home: IHome,
+  general: IGeneral,
 }
-const Home: NextPage<IProps> = ({ bands, home }: IProps) => {
+
+const Lineup: NextPage<IProps> = ({ bands, general }: IProps) => {
   return (
-    <Layout home={home}>
+    <Layout general={general}>
       <div>
         <Head>
-          <title>Moonalps Festival</title>
-          <meta name="description" content="Moonalps Festival à Bursins, Suisse" />
-          <link rel="icon" href="/favicon.ico" />
+          <title>{general?.attributes.metaTitle}</title>
+          <meta
+            name="description"
+            content={general?.attributes.metaDescription}
+          />
         </Head>
 
         <main className="w-full flex flex-col p-4">
@@ -30,7 +46,7 @@ const Home: NextPage<IProps> = ({ bands, home }: IProps) => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="col-span-2 sm:col-span-1">
-                    <img src={`http://127.0.0.1:1337${band.attributes.image?.data.attributes.url}`} className="w-full" />
+                    <Image src={`${URL}${band.attributes.image?.data.attributes.url}`} alt="Logo" width="100%" height="500rem" />
                   </div>
                   <div className="col-span-3 sm:col-span-2">
                     <p>{band.attributes.description}</p>
@@ -52,16 +68,4 @@ const Home: NextPage<IProps> = ({ bands, home }: IProps) => {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:1337/api/bands?populate=*");
-  const { data: bands } = await res.json();
-
-  const res3 = await fetch("http://127.0.0.1:1337/api/home?populate=*");
-  const { data: home } = await res3.json();
-
-  return {
-    props: { bands, home }
-  }
-}
-
-export default Home
+export default Lineup

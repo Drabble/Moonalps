@@ -43,25 +43,22 @@ export interface IGallery {
         publishedAt: string
         updatedAt: string}
 }
-export interface IHome {
+export interface IGeneral {
     id: number,
     attributes: {
-        dates: string
-        location: string
+        date: string
+        address: string
         copyright: string 
         youtubeUrl: string 
-        trailerYoutubeUrl: string 
         instagramUrl: string 
         facebookUrl: string 
-        cover: {
-            data: IImage
-        }
-        coverText: {
-            data: IImage
-        }
-        tree: {
-            data: IImage
-        }
+        postulationEmail: string 
+        contactEmail: string 
+        contactPhone: string 
+        about: string 
+        president: string 
+        metaDescription: string 
+        metaTitle: string 
         createdAt: string
         locale: string
         publishedAt: string
@@ -89,16 +86,6 @@ export interface IPartner {
             data: IImage
         }
         url: string 
-        createdAt: string
-        locale: string
-        publishedAt: string
-        updatedAt: string
-    }
-}
-export interface IAbout {
-    id: number,
-    attributes: {
-        content: string
         createdAt: string
         locale: string
         publishedAt: string

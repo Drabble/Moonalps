@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { IGeneral } from '../types';
 import Layout from '../components/Layout';
-import ReactMarkdown from 'react-markdown';
 
 const URL = process.env.STRAPIBASEURL;
 
@@ -19,7 +18,7 @@ type IProps = {
   general: IGeneral,
 }
 
-const About: NextPage<IProps> = ({ general }: IProps) => {
+const Tickets: NextPage<IProps> = ({ general }: IProps) => {
   return (
     <Layout general={general}>
       <div>
@@ -32,13 +31,11 @@ const About: NextPage<IProps> = ({ general }: IProps) => {
         </Head>
 
         <main className="w-full flex min-h-screen flex-col p-4">
-          <div>
-            <ReactMarkdown escapeHtml={false}>{general?.attributes.about}</ReactMarkdown>
-          </div>
+          <p className="text-6xl">Comming soon!</p>
         </main>
       </div >
     </Layout >
   )
 }
 
-export default About;
+export default Tickets;

@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { IHome } from "../types";
+import { IGeneral } from "../types";
 import Image from "next/image";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 type IProps = {
-  home: IHome;
+  general: IGeneral,
   onScroll?: (_: number) => void;
   children: JSX.Element;
 };
-const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
+const Layout: React.FC<IProps> = ({ general, onScroll, children }) => {
   const [scroll, setScroll] = useState(0);
 
   const changeScroll = () => {
@@ -32,11 +32,16 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
         <div className="text-white">
           <Link href="/">
             <a className="text-primary">
-              <Image src={"/logo.svg"} alt="home" height="40rem" width="40rem" />
+              <Image src={"/logo.svg"} alt="Accueil" height="40rem" width="40rem" />
             </a>
           </Link>
         </div>
         <div className="flex-grow flex gap-2 flex-wrap justify-center text-center text-2xl">
+          <Link href="/">
+            <a className="text-primary mx-2">
+              ACCUEIL
+            </a>
+          </Link>
           <Link href="/lineup">
             <a className="text-primary mx-2">
               LINEUP
@@ -47,7 +52,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
               LE FESTIVAL
             </a>
           </Link>
-          <Link href="/todo">
+          <Link href="/tickets">
             <a className="text-primary mx-2">
               BILLETERIE
             </a>
@@ -65,7 +70,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
         </div>
         <div className="flex justify-center items-center gap-2 text-2xl">
           <a
-            href={home?.attributes.youtubeUrl}
+            href={general?.attributes.youtubeUrl}
             rel="noreferrer"
             target="_blank"
             className="text-primary"
@@ -74,7 +79,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
             <FaYoutube />
           </a>
           <a
-            href={home?.attributes.instagramUrl}
+            href={general?.attributes.instagramUrl}
             rel="noreferrer"
             target="_blank"
             className="text-primary"
@@ -83,7 +88,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
             <FaInstagram />
           </a>
           <a
-            href={home?.attributes.facebookUrl}
+            href={general?.attributes.facebookUrl}
             rel="noreferrer"
             target="_blank"
             className="text-primary"
@@ -111,8 +116,8 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
             <p>
               Postulations
               <br />
-              <a itemProp="email" href="mailto:booking@moonalps.ch">
-                booking@moonalps.ch
+              <a itemProp="email" href={`mailto:${general?.attributes.postulationEmail}`}>
+                {general?.attributes.postulationEmail}
               </a>
             </p>
           </div>
@@ -120,15 +125,15 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
             <p>
               Contact
               <br />
-              <a itemProp="email" href="mailto:info@moonalps.ch">
-                info@moonalps.ch
+              <a itemProp="email" href={`mailto:${general?.attributes.contactEmail}`}>
+                {general?.attributes.contactEmail}
               </a>{" "}
               <br />
-              <a href="tel:+41 79 265 18 27">+41 79 265 18 27</a>
+              <a href={`tel:${general?.attributes.contactPhone}`}>{general?.attributes.contactPhone}</a>
             </p>
             <div className="flex gap-2 justify-center">
               <a
-                href={home?.attributes.youtubeUrl}
+                href={general?.attributes.youtubeUrl}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -136,7 +141,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
                 <FaYoutube />
               </a>
               <a
-                href={home?.attributes.instagramUrl}
+                href={general?.attributes.instagramUrl}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -144,7 +149,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
                 <FaInstagram />
               </a>
               <a
-                href={home?.attributes.facebookUrl}
+                href={general?.attributes.facebookUrl}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -154,7 +159,7 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
             </div>
           </div>
         </div>
-        <p className="text-sm p-4 my-4">{home?.attributes.copyright}</p>
+        <p className="text-sm p-4 my-4">{general?.attributes.copyright}</p>
       </footer>
     </div>
   );
