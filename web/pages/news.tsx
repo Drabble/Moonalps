@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import Moment from 'react-moment';
 import 'moment/locale/fr';
 
-const URL = process.env.STRAPIBASEURL;
+const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
   const res = await fetch(`${URL}/api/posts?populate=*`);

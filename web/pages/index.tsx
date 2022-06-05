@@ -5,7 +5,7 @@ import { IGeneral, IPartner, ISponsor } from "../types";
 import { useState } from "react";
 import Layout from "../components/Layout";
 
-const URL = process.env.STRAPIBASEURL;
+const URL = process.env.STRAPI_URL;
 
 type IProps = {
   sponsors: ISponsor[];

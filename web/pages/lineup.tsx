@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { IGeneral, IBand } from '../types';
 import Layout from '../components/Layout';
 
-const URL = process.env.STRAPIBASEURL;
+const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
   const res = await fetch(`${URL}/api/bands?populate=*`);

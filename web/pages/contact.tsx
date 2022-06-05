@@ -4,7 +4,7 @@ import { IGeneral, IPost } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
 
-const URL = process.env.STRAPIBASEURL;
+const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
   const res = await fetch(`${URL}/api/general?populate=*`);

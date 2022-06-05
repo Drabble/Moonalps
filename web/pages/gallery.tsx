@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import 'moment/locale/fr';
 import Masonry from 'react-masonry-css';
 
-const URL = process.env.STRAPIBASEURL;
+const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
   const res = await fetch(`${URL}/api/galleries?populate=*`);
