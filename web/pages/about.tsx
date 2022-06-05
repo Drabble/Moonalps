@@ -33,7 +33,7 @@ const About: NextPage<IProps> = ({ general }: IProps) => {
 
         <main className="w-full flex min-h-screen flex-col p-4">
           <div>
-            <ReactMarkdown escapeHtml={false}>{general?.attributes.about}</ReactMarkdown>
+            <ReactMarkdown>{general?.attributes.about}</ReactMarkdown>
           </div>
         </main>
       </div >
