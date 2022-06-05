@@ -9,8 +9,7 @@ body {
   font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: 12px;
-  background-color:rgb(240,240,240);
-  color: rgb(10,10,10);
+  @apply bg-menu;
 }
 h1 {
   font-size: 3rem;
@@ -23,12 +22,12 @@ p{
 }
 
 a {
-  color: rgb(224, 71, 71);
+  @apply text-primary;
 }
 a:hover,
 a:focus,
 a:active {
-  color: rgb(172, 53, 53);
+  @apply text-secondary;
   text-decoration: none;
 }
 

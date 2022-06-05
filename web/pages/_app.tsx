@@ -6,8 +6,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/*<link rel="icon" href="/favicon.ico" sizes="any" />*/}
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </Head>
       <Component {...pageProps} />
     </>

@@ -5,11 +5,33 @@ import { IHome, IPartner, ISponsor } from "../types";
 import { useState } from "react";
 import Layout from "../components/Layout";
 
+const URL = process.env.STRAPIBASEURL;
+
 type IProps = {
   sponsors: ISponsor[];
   partners: IPartner[];
   home: IHome;
 };
+
+export async function getStaticProps(context: any) {
+  const res = await fetch(`${URL}/api/sponsors?populate=*`);
+  console.log(res);
+  const { data: sponsors } = await res.json();
+  console.log(sponsors);
+
+  const res2 = await fetch(`${URL}/api/partners?populate=*`);
+  const { data: partners } = await res2.json();
+
+  const res3 = await fetch(`${URL}/api/home?populate=*`);
+  const { data: home } = await res3.json();
+
+  console.log(home);
+
+  return {
+    props: { sponsors, partners, home },
+  };
+};
+
 const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
   const [scroll, setScroll] = useState(0);
 
@@ -42,59 +64,82 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        {home?.attributes.cover.data && home?.attributes.coverText.data && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
+        >
           <div
+            className="absolute top-0 left-0 right-0 bottom-0"
             style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              //backgroundImage: `linear-gradient(to bottom, rgba(5,5,5, 0.5), rgba(25,25,25  ,0.5) 80%, rgba(210,210,210, 1)), url('http://127.0.0.1:1337${home?.attributes.cover.data.attributes.url}')`,
+              backgroundImage: `url('/moonalps.jpg')`,
+              backgroundRepeat: "repeat-y",
+              backgroundPosition: "center, center",
+              backgroundSize: "cover",
+              filter: `grayscale(${Math.max(0, 100 - scroll / 3)}%)`,
             }}
-          >
-            <div
-              className="absolute top-0 left-0 right-0 bottom-0"
-              style={{
-                //backgroundImage: `linear-gradient(to bottom, rgba(5,5,5, 0.5), rgba(25,25,25  ,0.5) 80%, rgba(210,210,210, 1)), url('http://127.0.0.1:1337${home?.attributes.cover.data.attributes.url}')`,
-                backgroundImage: `url('http://127.0.0.1:1337${home?.attributes.cover.data.attributes.url}')`,
-                backgroundRepeat: "repeat-y",
-                backgroundPosition: "center, center",
-                backgroundSize: "cover",
-                filter: `grayscale(${Math.max(0, 100 - scroll / 3)}%)`,
-              }}
-            ></div>
-            <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16">
-              <Image
-                src={`http://127.0.0.1:1337${home?.attributes.coverText.data.attributes.url}`}
-                alt="Logo"
-                width={800}
-                height={200}
-              />
-              <p className="text-2xl sm:text-4xl md:text-4xl lg:text-6xl text-center text-secondary relative font-bold uppercase">
-                {home?.attributes.dates}
-              </p>
-            </div>
+          ></div>
+          <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16">
+            <Image
+              src={`/cover.svg`}
+              alt="Logo"
+              width={800}
+              height={200}
+            />
+            <p className="text-2xl sm:text-5xl md:text-5xl lg:text-6xl text-center text-secondary relative font-bold uppercase mt-2">
+              {home?.attributes.dates}
+            </p>
           </div>
-        )}
+        </div>
 
         <div className="w-full h-screen bg-transparent"></div>
 
         <main
           className="w-full flex flex-col justify-stretch relative bg-tertiary"
-          style={{ marginTop: "700px" }}
+          style={{ marginTop: "700px", paddingTop: "200px" }}
         >
-          {home?.attributes.tree.data && (
-            <div
-              style={{
-                background: `url(${`http://127.0.0.1:1337${home?.attributes.tree.data.attributes.url}`}) `,
-                backgroundPosition: "top",
-                backgroundSize: "1500px 700px",
-                backgroundRepeat: "repeat-x",
-                height: "700px",
-                marginTop: "-700px",
-              }}
-            ></div>
-          )}
+          <div
+            style={{
+              background: `url(${`/trees.svg`}) `,
+              backgroundPosition: "-300px 0",
+              backgroundSize: "900px 700px",
+              backgroundRepeat: "repeat-x",
+              height: "750px",
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: Math.max(-1700, -600 - (scroll / 3)) + "px",
+            }}
+          ></div><div
+            style={{
+              background: `url(${`/trees.svg`}) `,
+              backgroundPosition: "1200px",
+              backgroundSize: "1500px 700px",
+              backgroundRepeat: "repeat-x",
+              height: "700px",
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: Math.max(-1100, -500 - (scroll / 5)) + "px",
+            }}
+          ></div><div
+            style={{
+              background: `url(${`/trees.svg`}) `,
+              backgroundPosition: "top",
+              backgroundSize: "2000px 650px",
+              backgroundRepeat: "repeat-x",
+              height: "700px",
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: -400 + "px",
+            }}
+          ></div>
           <div className="relative">
             <div className="h-screen text-center">
               <p className="text-6xl text-primary mb-16">
@@ -106,7 +151,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
               <div className="flex flex-wrap justify-center">
                 <div className="flex flex-col justify-center text-primary">
                   <Image
-                    src="/icons/artistes.svg"
+                    src={"/icons/artistes.svg"}
                     alt="Artistes"
                     width="100rem"
                     height="100rem"
@@ -115,7 +160,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
                 </div>
                 <div className="flex flex-col justify-center text-primary">
                   <Image
-                    src="/icons/binchs.svg"
+                    src={"/icons/binchs.svg"}
                     alt="Binchs"
                     width="100rem"
                     height="100rem"
@@ -124,7 +169,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
                 </div>
                 <div className="flex flex-col justify-center text-primary">
                   <Image
-                    src="/icons/camping.svg"
+                    src={"/icons/camping.svg"}
                     alt="Camping"
                     width="100rem"
                     height="100rem"
@@ -133,7 +178,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
                 </div>
                 <div className="flex flex-col justify-center text-primary">
                   <Image
-                    src="/icons/food.svg"
+                    src={"/icons/food.svg"}
                     alt="Nourriture"
                     width="100rem"
                     height="100rem"
@@ -145,17 +190,16 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
           </div>
         </main>
         <main className="w-full flex flex-col justify-stretch relative bg-tertiary">
-          {home?.attributes.tree.data && (
-            <div
-              style={{
-                background: `url(${`http://127.0.0.1:1337${home?.attributes.tree.data.attributes.url}`}) `,
-                backgroundPosition: "top",
-                backgroundSize: "1500px 700px",
-                backgroundRepeat: "repeat-x",
-                height: "700px",
-              }}
-            ></div>
-          )}
+
+          <div
+            style={{
+              background: `url(${`/trees.svg`}) `,
+              backgroundPosition: "top",
+              backgroundSize: "1500px 700px",
+              backgroundRepeat: "repeat-x",
+              height: "700px",
+            }}
+          ></div>
           <div className="h-screen relative">
             <div className="text-center">
               <p className="text-6xl text-primary mb-16">Sponsors</p>
@@ -184,17 +228,16 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
           </div>
         </main>
         <main className="w-full flex flex-col justify-stretch relative bg-tertiary">
-          {home?.attributes.tree.data && (
-            <div
-              style={{
-                background: `url(${`http://127.0.0.1:1337${home?.attributes.tree.data.attributes.url}`}) `,
-                backgroundPosition: "top",
-                backgroundSize: "1500px 700px",
-                backgroundRepeat: "repeat-x",
-                height: "700px",
-              }}
-            ></div>
-          )}
+
+          <div
+            style={{
+              background: `url(${`/trees.svg`}) `,
+              backgroundPosition: "top",
+              backgroundSize: "1500px 700px",
+              backgroundRepeat: "repeat-x",
+              height: "700px",
+            }}
+          ></div>
           <div className="h-screen relative">
             <div className="text-center">
               <p className="text-6xl text-primary mb-16">Partenaires</p>
@@ -227,22 +270,5 @@ const Home: NextPage<IProps> = ({ sponsors, partners, home }: IProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("http://127.0.0.1:1337/api/sponsors?populate=*");
-  const { data: sponsors } = await res.json();
-  console.log(sponsors);
-
-  const res2 = await fetch("http://127.0.0.1:1337/api/partners?populate=*");
-  const { data: partners } = await res2.json();
-
-  const res3 = await fetch("http://127.0.0.1:1337/api/home?populate=*");
-  const { data: home } = await res3.json();
-
-  console.log(home);
-
-  return {
-    props: { sponsors, partners, home },
-  };
-};
 
 export default Home;

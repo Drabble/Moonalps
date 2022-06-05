@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IHome } from "../types";
 import Image from "next/image";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import Link from "next/link";
 
 type IProps = {
   home: IHome;
@@ -29,28 +30,40 @@ const Layout: React.FC<IProps> = ({ home, onScroll, children }) => {
         }}
       >
         <div className="text-white">
-          <a className="text-primary" href="/">
-            <Image src={"/logo.svg"} height="25rem" width="25rem" />
-          </a>
+          <Link href="/">
+            <a className="text-primary">
+              <Image src={"/logo.svg"} alt="home" height="40rem" width="40rem" />
+            </a>
+          </Link>
         </div>
         <div className="flex-grow flex gap-2 flex-wrap justify-center text-center text-2xl">
-          <a className="text-primary mx-2" href="/lineup">
-            LINEUP
-          </a>
-          <a className="text-primary mx-2" href="/about">
-            LE FESTIVAL
-          </a>
-          <a className="text-primary mx-2" href="/todo">
-            BILLETERIE
-          </a>
-          <a className="text-primary mx-2" href="/gallery">
-            ANCIENNES EDITIONS
-          </a>
-          <a className="text-primary mx-2" href="/contact">
-            CONTACT
-          </a>
+          <Link href="/lineup">
+            <a className="text-primary mx-2">
+              LINEUP
+            </a>
+          </Link>
+          <Link href="/about">
+            <a className="text-primary mx-2">
+              LE FESTIVAL
+            </a>
+          </Link>
+          <Link href="/todo">
+            <a className="text-primary mx-2">
+              BILLETERIE
+            </a>
+          </Link>
+          <Link href="/gallery">
+            <a className="text-primary mx-2">
+              ANCIENNES EDITIONS
+            </a>
+          </Link>
+          <Link href="/contact">
+            <a className="text-primary mx-2">
+              CONTACT
+            </a>
+          </Link>
         </div>
-        <div className="flex justify-center items-center gap-2 text-xl">
+        <div className="flex justify-center items-center gap-2 text-2xl">
           <a
             href={home?.attributes.youtubeUrl}
             rel="noreferrer"

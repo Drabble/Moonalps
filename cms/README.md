@@ -1,57 +1,45 @@
-# 🚀 Getting started with Strapi
+# Moonalps - CMS backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+The backend of Moonalps is a Strapi application (headless CMS). It is used by the frontend to load data.
 
-### `develop`
+## Getting Started
 
 Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
 
-```
-npm run develop
-# or
+```bash
+yarn install
 yarn develop
 ```
 
-### `start`
+Open [http://localhost:1337](http://localhost:1337) with your browser to see the result.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
 
-```
-npm run start
-# or
-yarn start
-```
+- `yarn build` - Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+- `yarn start` - Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
 
-### `build`
+## Storage
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+Storage is configured to use Cloudinary, a Cloud provider for file storage. It needs to be configured with the following environement variables: 
 
 ```
-npm run build
-# or
-yarn build
+CLOUDINARY_NAME=
+CLOUDINARY_KEY=
+CLOUDINARY_SECRET=
 ```
 
-## ⚙️ Deployment
+Values for these variables are found on the Cloudinary dashboard page.
+
+## Deployment
 
 Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
 
-## 📚 Learn more
+We currently deploy on Heroku.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
+## Additional docs
+
+To learn more, take a look at the following resources:
+
 - [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
 - [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+- [Strapi deployment](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html) - Strapi deployment
+- [Strapi + Vercel tutorial](https://www.youtube.com/watch?v=9l3r0EFp9ow&list=LL&index=1) - a tutorial to deploy next + strapi on Vercel + Heroku free tiers.
