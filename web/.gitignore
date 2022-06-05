@@ -30,3 +30,11 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+############################
+# Vercel
+# Even if it is usually recommended to version this file, it may create issues on Vercel.
+############################
+
+package-lock.json
+
