@@ -16,7 +16,6 @@ type IProps = {
 export async function getStaticProps(context: any) {
   const res = await fetch(`${URL}/api/sponsors?populate=*`);
   const { data: sponsors } = await res.json();
-  console.log(JSON.stringify(sponsors[0].attributes.logo));
 
   const res2 = await fetch(`${URL}/api/partners?populate=*`);
   const { data: partners } = await res2.json();
@@ -85,30 +84,6 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
           <div
             style={{
               background: `url(${`/trees.svg`}) `,
-              backgroundPosition: "-300px 0",
-              backgroundSize: "900px 700px",
-              backgroundRepeat: "repeat-x",
-              height: "750px",
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: Math.max(-1700, -600 - (scroll / 3)) + "px",
-            }}
-          ></div><div
-            style={{
-              background: `url(${`/trees.svg`}) `,
-              backgroundPosition: "1200px",
-              backgroundSize: "1500px 700px",
-              backgroundRepeat: "repeat-x",
-              height: "700px",
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: Math.max(-1100, -500 - (scroll / 5)) + "px",
-            }}
-          ></div><div
-            style={{
-              background: `url(${`/trees.svg`}) `,
               backgroundPosition: "top",
               backgroundSize: "2000px 650px",
               backgroundRepeat: "repeat-x",
@@ -119,7 +94,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
               top: -400 + "px",
             }}
           ></div>
-          <div className="relative mb-40 text-center">
+          <div className="relative mb-60 text-center">
             <p className="text-6xl text-primary mb-16">
               Une 3<sup>ème</sup> édition sur 2 jours !
             </p>
@@ -166,19 +141,17 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
-        <main className="w-full flex flex-col justify-stretch relative bg-tertiary">
 
-          <div
-            style={{
-              background: `url(${`/trees.svg`}) `,
-              backgroundPosition: "top",
-              backgroundSize: "1500px 700px",
-              backgroundRepeat: "repeat-x",
-              height: "700px",
-            }}
-          ></div>
+        <div className="w-full h-40" style={{
+          backgroundImage: 'url("/moonalps.jpg")',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}></div>
+
+        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20">
+
           <div className="relative mb-40 text-center">
-            <p className="text-6xl text-primary mb-16">Sponsors</p>
+            <p className="text-6xl text-black mb-16">Sponsors</p>
             <div className="flex flex-col items-center">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {sponsors.map((sponsor, i) => (
@@ -194,7 +167,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                       alt={sponsor.attributes.name}
                       className="w-96"
                     />
-                    <p className="text-primary text-sm">
+                    <p className="text-gray-800 text-sm">
                       {sponsor.attributes.name}
                     </p>
                   </a>
@@ -203,19 +176,10 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
-        <main className="w-full flex flex-col justify-stretch relative bg-tertiary">
+        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20 border-t-8 border-b-8 border-black">
 
-          <div
-            style={{
-              background: `url(${`/trees.svg`}) `,
-              backgroundPosition: "top",
-              backgroundSize: "1500px 700px",
-              backgroundRepeat: "repeat-x",
-              height: "700px",
-            }}
-          ></div>
-          <div className="relative mb-96 text-center">
-            <p className="text-6xl text-primary mb-16">Partenaires</p>
+          <div className="relative mb-40 text-center">
+            <p className="text-6xl text-black mb-16">Partenaires</p>
             <div className="flex flex-col items-center">
               <div className="flex justify-center p-4 gap-4 flex-wrap">
                 {partners.map((partner, i) => (
@@ -231,7 +195,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                       alt={partner.attributes.name}
                       className="w-96"
                     />
-                    <p className="text-primary text-sm">
+                    <p className="text-gray-800 text-sm">
                       {partner.attributes.name}
                     </p>
                   </a>

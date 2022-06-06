@@ -2,8 +2,9 @@ module.exports = [
   'strapi::errors',
   {
     name: 'strapi::security',
-    config: {
-      contentSecurityPolicy: {
+    // Allow images from cloudinary
+    config: { 
+      contentSecurityPolicy: { 
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
