@@ -141,15 +141,18 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
+        <div>
 
-        <div className="w-full h-40" style={{
-          backgroundImage: 'url("/moonalps.jpg")',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
-        }}></div>
-
+          <div className="w-full h-80" style={{
+            backgroundImage: 'url("/directions.jpg")',
+            backgroundAttachment: 'fixed',
+            backgroundRepeat: "repeat-y",
+            backgroundPosition: "center, center",
+            backgroundSize: "cover",
+            filter: `grayscale(${Math.max(0, 100 - scroll / 3)}%)`,
+          }}></div>
+        </div>
         <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20">
-
           <div className="relative mb-40 text-center">
             <p className="text-6xl text-black mb-16">Sponsors</p>
             <div className="flex flex-col items-center">
@@ -176,7 +179,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
-        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20 border-t-8 border-b-8 border-black">
+        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20 border-t-4 border-black">
 
           <div className="relative mb-40 text-center">
             <p className="text-6xl text-black mb-16">Partenaires</p>
