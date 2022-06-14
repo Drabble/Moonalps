@@ -81,8 +81,8 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             />
             <p className="text-2xl sm:text-5xl md:text-5xl font-extrabold lg:text-6xl text-center text-secondary relative  uppercase mt-2"
               style={{
-                "-webkit-text-stroke-width": "0.007em",
-                "-webkit-text-stroke-color": "black"
+                WebkitTextStrokeWidth: "0.007em",
+                WebkitTextStrokeColor: "black"
               }}>
               {general?.attributes.date}
             </p>
