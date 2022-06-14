@@ -37,29 +37,32 @@ const Gallery: NextPage<IProps> = ({ galleries, general }: IProps) => {
           />
         </Head>
 
-        <main className="w-full flex flex-col p-4">
-          <div className="flex flex-col gap-2 justify-center">
-            {galleries.map((gallery, i) =>
-              <div key={i} className="w-full p-4">
-                <div>
-                  <h1
-                    className="text-center">Galerie {gallery.attributes.year}</h1>
-                  <p className="text-center mb-2">{gallery.attributes.credits}</p>
+        <main className="p-4 pt-20 bg-indigo-800">
+          <div className="container m-auto mb-16">
+            <p className="text-center text-8xl mt-28 mb-28">ANCIENNES EDITIONS</p>
+            <div className="flex flex-col gap-2 justify-center">
+              {galleries.map((gallery, i) =>
+                <div key={i} className="w-full p-4">
+                  <div>
+                    <h1
+                      className="text-center">Galerie {gallery.attributes.year}</h1>
+                    <p className="text-center mb-2">{gallery.attributes.credits}</p>
+                  </div>
+                  <Masonry
+                    breakpointCols={3}
+                    className="my-masonry-grid"
+                    columnClassName="my-masonry-grid_column">
+                    {
+                      gallery.attributes.pictures.data.map((picture: IImage, j: Number) => (
+                        <div className="col-span-2" key={j.toString()}>
+                          <img src={`${picture.attributes.url}`} alt="Photo" />
+                        </div>
+                      ))
+                    }
+                  </Masonry>
                 </div>
-                <Masonry
-                  breakpointCols={3}
-                  className="my-masonry-grid"
-                  columnClassName="my-masonry-grid_column">
-                  {
-                    gallery.attributes.pictures.data.map((picture: IImage, j: Number) => (
-                      <div className="col-span-2" key={j.toString()}>
-                        <Image src={`${URL}${picture.attributes.url}`} alt="Photo" width="400rem" height="400rem" />
-                      </div>
-                    ))
-                  }
-                </Masonry>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </main>
       </div>

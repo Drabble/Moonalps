@@ -31,9 +31,10 @@ const About: NextPage<IProps> = ({ general }: IProps) => {
           />
         </Head>
 
-        <main className="w-full flex min-h-screen flex-col p-4">
-          <div>
-            <ReactMarkdown>{general?.attributes.about}</ReactMarkdown>
+        <main className="p-4 pt-20 bg-indigo-800">
+          <div className="container m-auto mb-16">
+            <p className="text-center text-8xl mt-28 mb-28">LE FESTIVAL</p>
+            <ReactMarkdown >{general?.attributes.about}</ReactMarkdown>
           </div>
         </main>
       </div >

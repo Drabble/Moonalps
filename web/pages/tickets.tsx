@@ -30,8 +30,11 @@ const Tickets: NextPage<IProps> = ({ general }: IProps) => {
           />
         </Head>
 
-        <main className="w-full flex min-h-screen flex-col p-4">
-          <p className="text-6xl">Comming soon!</p>
+        <main className="p-4 pt-20 bg-indigo-800">
+          <div className="container m-auto mb-16">
+            <p className="text-center text-8xl mt-28 mb-28">BILLETERIE</p>
+            <p className="text-3xl italic text-center">Coming soon!</p>
+          </div>
         </main>
       </div >
     </Layout >

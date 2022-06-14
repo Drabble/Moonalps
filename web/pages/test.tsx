@@ -43,7 +43,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
 
   return (
     <Layout general={general} onScroll={(value) => setScroll(value)}>
-      <div>
+      <div className="bg-teal-700">
         <Head>
           <title>{general?.attributes.metaTitle}</title>
           <meta
@@ -52,58 +52,20 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
           />
         </Head>
 
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-        >
-          <div
-            className="absolute top-0 left-0 right-0 bottom-0"
-            style={{
-              //backgroundImage: `linear-gradient(to bottom, rgba(5,5,5, 0.5), rgba(25,25,25  ,0.5) 80%, rgba(210,210,210, 1)), url('/moonalps.jpg')`,
-              backgroundImage: `url('/moonalps.jpg')`,
-              backgroundRepeat: "repeat-y",
-              backgroundPosition: "center, center",
-              backgroundSize: "cover",
-              filter: `grayscale(${Math.max(0, 100 - scroll / 3)}%)`,
-            }}
-          ></div>
-          <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16">
-            <Image
-              src={`/cover.svg`}
-              alt="Logo"
-              width={800}
-              height={200}
-            />
-            <p className="text-2xl sm:text-5xl md:text-5xl font-extrabold lg:text-6xl text-center text-secondary relative  uppercase mt-2"
-              style={{
-                "-webkit-text-stroke-width": "0.007em",
-                "-webkit-text-stroke-color": "black"
-              }}>
-              {general?.attributes.date}
-            </p>
-          </div>
+        <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16">
+          <Image
+            src={`/cover_full.svg`}
+            alt="Logo"
+            width={1200}
+            height={400}
+          />
         </div>
 
-        <div className="min-h-screen w-full bg-transparent"></div>
 
         <main
-          className="relative"
+          className="bg-blue-800 relative min-h-screen flex justify-center items-center"
         >
-          <div
-            style={{
-              background: `url(${`/trees.svg`}) `,
-              backgroundPosition: "top",
-              backgroundSize: `${width}px ${width / 2}px`,
-              backgroundRepeat: "repeat-x",
-              height: `${width / 2}px`,
-            }}
-          ></div>
-          <div className="text-center pb-80 pt-20 bg-tertiary -mt-2">
+          <div className="text-center -mt-2">
             <p className="text-6xl text-primary mb-16">
               Une 3<sup>ème</sup> édition sur 2 jours !
             </p>
@@ -156,25 +118,8 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
-        <div>
-
-          <div className="w-full h-96" style={{
-            backgroundImage: 'url("/directions.jpg")',
-            backgroundAttachment: 'fixed',
-            backgroundRepeat: "repeat-y",
-            backgroundPosition: "center, center",
-            backgroundSize: "cover",
-            filter: `grayscale(${Math.max(0, 100 - scroll / 3)}%)`,
-          }}>
-
-            <div className="h-10 bg-gradient-to-b from-tertiary"></div>
-
-
-            <div className="h-10 bg-gradient-to-b to-white"></div>
-          </div>
-        </div>
         <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20">
-          <div className="relative mb-40 text-center">
+          <div className="relative mb-8 text-center">
             <p className="text-6xl text-black mb-16">Sponsors</p>
             <div className="flex flex-col items-center">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
@@ -200,7 +145,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
             </div>
           </div>
         </main>
-        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 pt-20 border-t-4 border-black">
+        <main className="w-full flex flex-col justify-stretch relative bg-white p-4 border-black">
 
           <div className="relative mb-40 text-center">
             <p className="text-6xl text-black mb-16">Partenaires</p>
