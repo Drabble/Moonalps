@@ -5,6 +5,7 @@ import { IGeneral, IGallery, IImage } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
 import Masonry from 'react-masonry-css';
+import { useState } from 'react';
 
 const URL = process.env.STRAPI_URL;
 
@@ -26,8 +27,9 @@ type IProps = {
 }
 
 const Gallery: NextPage<IProps> = ({ galleries, general }: IProps) => {
+  const [scroll, setScroll] = useState(0);
   return (
-    <Layout general={general}>
+    <Layout general={general}  onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
           <title>{general?.attributes.metaTitle}</title>
@@ -37,15 +39,20 @@ const Gallery: NextPage<IProps> = ({ galleries, general }: IProps) => {
           />
         </Head>
 
-        <main className="p-4 pt-20 bg-indigo-800">
+        <main className="bg-zinc-900 text-white pt-20 p-2 text-justify" style={{
+            backgroundImage: `url('/trees4.svg')`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "cover",
+            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
+          }}>
           <div className="container m-auto mb-16">
             <p className="text-center text-8xl mt-28 mb-28">ANCIENNES EDITIONS</p>
             <div className="flex flex-col gap-2 justify-center">
               {galleries.map((gallery, i) =>
-                <div key={i} className="w-full p-4">
-                  <div>
+                <div key={i} className="bg-zinc-900 p-8 border-8 border-black rounded-lg mb-8">
+                <div>
                     <h1
-                      className="text-center">Galerie {gallery.attributes.year}</h1>
+                      className="text-center">GALERIE {gallery.attributes.year}</h1>
                     <p className="text-center mb-2">{gallery.attributes.credits}</p>
                   </div>
                   <Masonry

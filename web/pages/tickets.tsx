@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { IGeneral } from '../types';
 import Layout from '../components/Layout';
+import { useState } from 'react';
 
 const URL = process.env.STRAPI_URL;
 
@@ -19,8 +20,9 @@ type IProps = {
 }
 
 const Tickets: NextPage<IProps> = ({ general }: IProps) => {
+  const [scroll, setScroll] = useState(0);
   return (
-    <Layout general={general}>
+    <Layout general={general}  onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
           <title>{general?.attributes.metaTitle}</title>
@@ -30,7 +32,12 @@ const Tickets: NextPage<IProps> = ({ general }: IProps) => {
           />
         </Head>
 
-        <main className="p-4 pt-20 bg-indigo-800">
+        <main className="bg-zinc-900 text-white pt-20 p-2 text-justify" style={{
+            backgroundImage: `url('/trees4.svg')`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "cover",
+            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
+          }}>
           <div className="container m-auto mb-16">
             <p className="text-center text-8xl mt-28 mb-28">BILLETERIE</p>
             <p className="text-3xl italic text-center">Coming soon!</p>

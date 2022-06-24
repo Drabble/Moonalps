@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { IGeneral, IPost } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
+import { useState } from 'react';
 
 const URL = process.env.STRAPI_URL;
 
@@ -20,8 +21,9 @@ type IProps = {
 }
 
 const Contact: NextPage<IProps> = ({ general }: IProps) => {
+  const [scroll, setScroll] = useState(0);
   return (
-    <Layout general={general}>
+    <Layout general={general}  onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
           <title>{general?.attributes.metaTitle}</title>
@@ -31,7 +33,12 @@ const Contact: NextPage<IProps> = ({ general }: IProps) => {
           />
         </Head>
 
-        <main className="p-4 pt-20 bg-indigo-800">
+        <main className="bg-zinc-900 text-white pt-20 p-2 text-justify" style={{
+            backgroundImage: `url('/trees4.svg')`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "cover",
+            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
+          }}>
           <div className="container m-auto mb-16">
             <p className="text-center text-8xl mt-28 mb-28">CONTACT</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">

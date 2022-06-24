@@ -25,7 +25,7 @@ const Layout: React.FC<IProps> = ({ general, onScroll, children }) => {
   return (
     <div>
       <nav className={`fixed top-0 w-full z-50 bg-menu border-gray-200 px-2 md:px-4 py-2.5 rounded`} style={{
-        background: `rgba(0, 0, 0, ${Math.min(scroll / 100, 0.8)})`
+        background: `rgba(10, 10, 10, ${Math.min(scroll / 100, 1.0)})`
       }}>
         <div className="flex flex-wrap justify-between items-center mx-auto">
 
@@ -116,7 +116,12 @@ const Layout: React.FC<IProps> = ({ general, onScroll, children }) => {
 
       {children}
 
-      < footer className="flex flex-col justify-center items-center text-white relative bg-menu" >
+      <footer className="flex flex-col justify-center items-center text-white relative bg-zinc-900" 
+       style={{
+        backgroundImage: `url('/trees6.svg')`,
+        backgroundRepeat: "repeat",
+        backgroundSize: "cover",
+      }}>
         <div className="relative w-full max-w-full h-96">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21990.331813895922!2d6.268520421094685!3d46.452828613988856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c445658efd4a3%3A0x4b2cf936e7b1b5a8!2sBursins!5e0!3m2!1sen!2sch!4v1650235559671!5m2!1sen!2sch"

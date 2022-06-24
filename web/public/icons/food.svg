@@ -1,4 +1,5 @@
-<svg id="Export" xmlns="http://www.w3.org/2000/svg" width="4704.123" height="4704.123" viewBox="0 0 4704.123 4704.123">
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 4704.123 4704.123" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .cls-1 {
@@ -34,8 +35,8 @@
       }
     </style>
   </defs>
-  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061"/>
-  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408"/>
+  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061" style="fill: none;"/>
+  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408" style="stroke: rgb(0, 0, 0); stroke-width: 35px;"/>
   <g id="Food2021">
     <path id="F9" class="cls-3" d="M2165.88,2630.89L1481.84,1467.82l311.81-133.79L2338.5,2645.99Z" transform="translate(-47.938 -47.938)"/>
     <path id="F10" class="cls-3" d="M2629.81,2421.58L2173.43,1262.82l-212.55,55.03,590.17,1209.46Z" transform="translate(-47.938 -47.938)"/>

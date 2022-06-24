@@ -1,4 +1,5 @@
-<svg id="Export" xmlns="http://www.w3.org/2000/svg" width="4704.123" height="4704.123" viewBox="0 0 4704.123 4704.123">
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 4704.123 4704.123" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .cls-1 {
@@ -30,13 +31,13 @@
       }
     </style>
   </defs>
-  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061"/>
-  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408"/>
+  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061" style="fill: none;"/>
+  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408" style="stroke-width: 35px; stroke: rgb(0, 0, 0);"/>
   <g id="Camping2022">
     <path id="BLK_FILL" class="cls-3" d="M1966,3518l434-1390,629,1394Z" transform="translate(-47.938 -47.938)"/>
     <path id="Arm_R" class="cls-4" d="M1248,3522L2589,939" transform="translate(-47.938 -47.938)"/>
     <path id="ARM_L" class="cls-4" d="M2227,938L3535,3421" transform="translate(-47.938 -47.938)"/>
-    <path id="TENT" class="cls-4" d="M1222,3523L2410.43,1284.71l1183,2245.65-822.27.64L2414,2316.7,2057.42,3523H1222Z" transform="translate(-47.938 -47.938)"/>
-    <path id="FLOOR" class="cls-4" d="M1038,3434H3777c113.89,0,117.8,173,0,173H1038C923.587,3607,919.773,3434,1038,3434Z" transform="translate(-47.938 -47.938)"/>
+    <path id="TENT" class="cls-4" d="M1222,3523L2410.43,1284.71l1183,2245.65-822.27.64L2414,2316.7,2057.42,3523H1222Z" transform="translate(-47.938 -47.938)" style="fill: rgb(92, 170, 219);"/>
+    <path id="FLOOR" class="cls-4" d="M1038,3434H3777c113.89,0,117.8,173,0,173H1038C923.587,3607,919.773,3434,1038,3434Z" transform="translate(-47.938 -47.938)" style="fill: rgb(16, 45, 63);"/>
   </g>
 </svg>

@@ -1,4 +1,5 @@
-<svg id="Export" xmlns="http://www.w3.org/2000/svg" width="4704.123" height="4704.123" viewBox="0 0 4704.123 4704.123">
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 4704.123 4704.123" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .cls-1 {
@@ -39,10 +40,10 @@
       }
     </style>
   </defs>
-  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061"/>
-  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408"/>
+  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061" style="fill: none;"/>
+  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408" style="stroke: rgb(0, 0, 0); stroke-width: 35px;"/>
   <g id="Artistes2021">
-    <path id="HANDLE" class="cls-3" d="M2386,1791L3601,3427s68.01,108.5-82,251c-113.61,107.92-258,75-258,75L1800,2302s40.19-178.04,230-340S2386,1791,2386,1791Z" transform="translate(-47.938 -47.938)"/>
+    <path id="HANDLE" class="cls-3" d="M2386,1791L3601,3427s68.01,108.5-82,251c-113.61,107.92-258,75-258,75L1800,2302s40.19-178.04,230-340S2386,1791,2386,1791Z" transform="translate(-47.938 -47.938)" style="fill: rgb(183, 192, 197);"/>
     <path id="ROUND" class="cls-4" d="M2386,1791c1.08-10.23,37.65-291.21-151-522-153.69-188.02-510.94-342.353-846-87-372.82,284.13-239.18,720.14-52,915,177.62,184.91,442.27,204.87,463,205,95.85,0.59,239.51-24.46,397-171C2333.56,2003.94,2379.14,1856.23,2386,1791Z" transform="translate(-47.938 -47.938)"/>
     <path id="LINE" class="cls-5" d="M1361,2115c344.08,84.58,746.94-251.72,868-543" transform="translate(-47.938 -47.938)"/>
   </g>
