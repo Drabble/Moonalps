@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -27,8 +27,18 @@ type IProps = {
   general: IGeneral,
 }
 
-const News: NextPage<IProps> = ({ posts, general }: IProps) => (
-  <Layout general={general} inverse>
+const News: NextPage<IProps> = ({ posts, general }: IProps) => {
+  const [scroll, setScroll] = useState(0);
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener('resize', () => {
+      console.log(window.innerHeight, window.innerWidth);
+      setWidth(window.innerWidth);
+    });
+  }, []);
+
+  return <Layout general={general} inverse>
     <div>
       <Head>
         <title>{general?.attributes.metaTitle}</title>
@@ -64,7 +74,7 @@ const News: NextPage<IProps> = ({ posts, general }: IProps) => (
                         <Moment format="LLLL">
                           {post?.attributes.publishedAt}
                         </Moment>
-                      </p>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -75,6 +85,6 @@ const News: NextPage<IProps> = ({ posts, general }: IProps) => (
       </main>
     </div>
   </Layout>
-);
+};
 
 export default News;
