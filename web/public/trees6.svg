@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-  <path style="stroke: rgb(255, 255, 255); fill: none; stroke-width: 1px;" d="M 248.109 384.869 L 405.076 384.396 L 369.518 327.746 L 394.824 328.753 L 359.067 258.913 L 376.045 259.697 L 330.541 164.298 L 282.567 259.398 L 305.487 258.811 L 263.79 326.193 L 289.926 328.165 L 248.109 384.869 Z"/>
-  <path style="stroke: rgb(255, 255, 255); fill: none; stroke-width: 1px;" d="M 26.131 264.858 L 226.643 264.999 L 182.044 209.911 L 212.096 210.032 L 153.047 138.91 L 186.33 138.646 L 131.582 51.546 L 69.984 141.09 L 103.939 138.858 L 47.213 208.812 L 73.986 208.309 L 26.131 264.858 Z"/>
-  <rect x="104.631" y="264.811" width="32.757" height="64.959" style="stroke: rgb(255, 255, 255); fill: none; stroke-width: 1px;"/>
-  <rect x="314.716" y="384.571" width="34.861" height="66.272" style="stroke: rgb(255, 255, 255); fill: none; stroke-width: 1px;"/>
-  <path style="stroke: rgb(255, 255, 255); stroke-width: 1px; fill: none;" d="M 360.122 142.806 L 481.556 140.958 L 455.14 102.928 L 471.916 103.641 L 445.336 62.277 L 461.059 64.63 L 429.488 16.979 L 399.577 62.401 L 411.701 64.122 L 380.5 100.778 L 400.535 101.453 L 360.122 142.806 Z"/>
-  <rect x="415.542" y="144.28" width="21.078" height="39.625" style="stroke: rgb(255, 255, 255); stroke-width: 1px; fill: none;"/>
-</svg>

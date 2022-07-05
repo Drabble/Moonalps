@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { IGeneral, IPartner, ISponsor } from "../types";
-import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
+import React, { useState, useEffect } from 'react';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { IGeneral, IPartner, ISponsor } from '../types';
+import Layout from '../components/Layout';
+import Tree from '../assets/Tree.svg';
 
 const URL = process.env.STRAPI_URL;
 
@@ -14,7 +14,7 @@ type IProps = {
   general: IGeneral;
 };
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps() {
   const res = await fetch(`${URL}/api/sponsors?populate=*`);
   const { data: sponsors } = await res.json();
 
@@ -27,8 +27,7 @@ export async function getStaticProps(context: any) {
   return {
     props: { sponsors, partners, general },
   };
-};
-
+}
 
 const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
   const [scroll, setScroll] = useState(0);
@@ -36,14 +35,14 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener('resize', () => {
-      console.log(window.innerHeight, window.innerWidth)
+      console.log(window.innerHeight, window.innerWidth);
       setWidth(window.innerWidth);
-    })
-  }, [])
+    });
+  }, []);
 
   return (
-    <Layout general={general} onScroll={(value) => setScroll(value)}>
-      <div className="bg-zinc-900">
+    <Layout general={general} onScroll={(value) => setScroll(value)} inverse={false}>
+      <div className="bg-dark-900">
         <Head>
           <title>{general?.attributes.metaTitle}</title>
           <meta
@@ -52,21 +51,20 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
           />
         </Head>
 
-        <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16 relative"
-
-          style={{
-            backgroundImage: `url('/trees4.svg')`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "cover",
-            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
-          }}>
+        <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16 relative">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+            <Tree
+              className="w-full stroke-dark-800 fill-transparent"
+              style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }}
+            />
+          </div>
           <Image
-            src={`/cover_full.svg`}
+            src="/cover_full.svg"
             alt="Logo"
             width={1200}
             height={400}
           />
-          {/*<div
+          {/* <div
             style={{
               position: 'absolute',
               bottom: '0',
@@ -77,32 +75,36 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
               height: `100%`,
               width: '100%',
             }}
-          ></div>*/}
+          ></div> */}
         </div>
 
-        <main
-          className="bg-zinc-100 text-zinc-900  relative min-h-screen flex justify-center items-center p-2"
-          style={{
-            backgroundImage: `url('/trees5.svg')`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "cover",
-            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
-          }}
+        <div
+          className="bg-dark-100 text-dark-900 min-h-screen flex justify-center items-center p-2 relative"
         >
-          <div className="text-center -mt-2">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+            <Tree
+              className="w-full stroke-dark-200 fill-transparent"
+              style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }}
+            />
+          </div>
+          <div className="text-center -mt-2 relative">
             <p className="text-9xl mb-16">
-              Une 3<sup>ème</sup> édition sur 2 jours !
+              Une 3
+              <sup>ème</sup>
+              {' '}
+              édition sur 2 jours !
             </p>
           </div>
-        </main>
-        <main className="bg-zinc-900 text-primary w-full p-16"
-          style={{
-            backgroundImage: `url('/trees5.svg')`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "cover",
-            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
-          }}>
-          <div className="bg-white text-zinc-900 rounded-md py-16 text-center">
+        </div>
+        <div className="bg-dark-900 text-primary w-full p-16 fill-blue-500 relative">
+
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center ">
+            <Tree
+              className="w-full stroke-dark-200 fill-transparent"
+              style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }}
+            />
+          </div>
+          <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">SPONSORS</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
@@ -119,27 +121,25 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                       alt={sponsor.attributes.name}
                       className="w-60"
                     />
-                    {/*<p className=" text-sm">
+                    {/* <p className=" text-sm">
                       {sponsor.attributes.name}
-                </p>*/}
+                </p> */}
                   </a>
                 ))}
               </div>
             </div>
           </div>
-        </main>
+        </div>
 
-        <main className="bg-zinc-100 text-primary w-full p-16"
+        <div className="bg-dark-100 text-primary w-full p-16 relative">
 
-          style={{
-            backgroundImage: `url('/trees4.svg')`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "cover",
-            backgroundPosition: `${scroll / 8}px ${scroll / 4}px`,
-          }}>
-
-
-          <div className="bg-white text-zinc-900 rounded-md py-16 text-center">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+            <Tree
+              className="w-full stroke-dark-800 fill-transparent"
+              style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }}
+            />
+          </div>
+          <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">PARTENAIRES</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
@@ -157,19 +157,18 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
                       className="w-60"
                     />
 
-                    {/*<p className=" text-sm">
+                    {/* <p className=" text-sm">
                       {partner.attributes.name}
-                </p>*/}
+                </p> */}
                   </a>
                 ))}
               </div>
             </div>
           </div>
-        </main>
-      </div >
-    </Layout >
+        </div>
+      </div>
+    </Layout>
   );
 };
-
 
 export default Home;
