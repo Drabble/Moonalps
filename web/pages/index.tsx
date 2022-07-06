@@ -45,25 +45,14 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
       <div className="bg-dark-900">
         <Head>
           <title>{general?.attributes.metaTitle}</title>
-          <meta
-            name="description"
-            content={general?.attributes.metaDescription}
-          />
+          <meta name="description" content={general?.attributes.metaDescription} />
         </Head>
 
         <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16 relative">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-            <Tree
-              className="w-full stroke-dark-800 fill-transparent"
-              style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }}
-            />
+            <Tree className="w-full stroke-dark-800 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
-          <Image
-            src="/cover_full.svg"
-            alt="Logo"
-            width={1200}
-            height={400}
-          />
+          <Image src="/cover_full.svg" alt="Logo" width={1200} height={400} />
           {/* <div
             style={{
               position: 'absolute',
@@ -78,49 +67,27 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
           ></div> */}
         </div>
 
-        <div
-          className="bg-dark-100 text-dark-900 min-h-screen flex justify-center items-center p-2 relative"
-        >
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-            <Tree
-              className="w-full stroke-dark-200 fill-transparent"
-              style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }}
-            />
+        <div className="bg-dark-100 text-dark-900 min-h-screen flex justify-center items-center p-2 relative">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
+            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="text-center -mt-2 relative">
             <p className="text-9xl mb-16">
-              Une 3
-              <sup>ème</sup>
-              {' '}
-              édition sur 2 jours !
+              Une 3<sup>ème</sup> édition sur 2 jours !
             </p>
           </div>
         </div>
         <div className="bg-dark-900 text-primary w-full p-16 fill-blue-500 relative">
-
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center ">
-            <Tree
-              className="w-full stroke-dark-200 fill-transparent"
-              style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }}
-            />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
+            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">SPONSORS</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {sponsors.map((sponsor, i) => (
-                  <a
-                    key={i}
-                    href={sponsor.attributes.url}
-                    rel="noreferrer"
-                    target="_blank"
-                    className="flex flex-col justify-center items-center"
-                  >
-                    <img
-                      src={`${sponsor.attributes.logo.data.attributes.url}`}
-                      alt={sponsor.attributes.name}
-                      className="w-60"
-                    />
+                  <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                    <img src={`${sponsor.attributes.logo.data.attributes.url}`} alt={sponsor.attributes.name} className="w-60" />
                     {/* <p className=" text-sm">
                       {sponsor.attributes.name}
                 </p> */}
@@ -132,30 +99,16 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
         </div>
 
         <div className="bg-dark-100 text-primary w-full p-16 relative">
-
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-            <Tree
-              className="w-full stroke-dark-800 fill-transparent"
-              style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }}
-            />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
+            <Tree className="w-full stroke-dark-800 fill-transparent" style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">PARTENAIRES</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {partners.map((partner, i) => (
-                  <a
-                    key={i}
-                    href={partner.attributes.url}
-                    rel="noreferrer"
-                    target="_blank"
-                    className="flex flex-col justify-center items-center"
-                  >
-                    <img
-                      src={`${partner.attributes.logo.data.attributes.url}`}
-                      alt={partner.attributes.name}
-                      className="w-60"
-                    />
+                  <a key={i} href={partner.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                    <img src={`${partner.attributes.logo.data.attributes.url}`} alt={partner.attributes.name} className="w-60" />
 
                     {/* <p className=" text-sm">
                       {partner.attributes.name}

@@ -9,6 +9,7 @@ body {
   font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-size: 12px;
+  overflow-x: hidden;
   @apply bg-menu text-white;
 }
 
@@ -45,6 +46,9 @@ a:active {
   box-sizing: border-box;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
 .my-masonry-grid {
   display: -webkit-box;

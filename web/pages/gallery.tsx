@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { IGeneral, IGallery, IImage } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
@@ -68,7 +67,7 @@ const Gallery: NextPage<IProps> = ({ galleries, general }: IProps) => {
                     columnClassName="my-masonry-grid_column"
                   >
                     {
-                      gallery.attributes.pictures.data.map((picture: IImage, j: Number) => (
+                      gallery.attributes.pictures.data.map((picture: IImage, j: number) => (
                         <div className="col-span-2" key={j.toString()}>
                           <img src={`${picture.attributes.url}`} alt="Photo" />
                         </div>
