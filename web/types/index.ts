@@ -109,26 +109,26 @@ export interface IPartner {
 export interface IImage {
     id: number,
     attributes: {
-        name: String,
-        alternativeText: String,
-        caption: String,
+        name: string,
+        alternativeText: string,
+        caption: string,
         width: number,
         height: number,
         formats: {
-        thumbnail: [Object],
-        large: [Object],
-        medium: [Object],
-        small: [Object]
+        thumbnail: [any],
+        large: [any],
+        medium: [any],
+        small: [any]
         },
-        hash: String,
-        ext: String,
+        hash: string,
+        ext: string,
         mime: StringConstructor,
         size: 30.93,
-        url: String,
-        previewUrl: String,
-        provider: String,
-        provider_metadata: String,
-        createdAt: String,
-        updatedAt: String
+        url: string,
+        previewUrl: string,
+        provider: string,
+        provider_metadata: string,
+        createdAt: string,
+        updatedAt: string
     }
 }

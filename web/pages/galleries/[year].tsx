@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 const URL = process.env.STRAPI_URL;
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
   const { data: bands } = await bandsResponse.json();
 
