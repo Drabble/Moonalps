@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Moment from 'react-moment';
-import { IGeneral, IPost } from '../types';
+import { IBand, IGallery, IGeneral, IPost } from '../types';
 import 'moment/locale/fr';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
@@ -35,7 +35,7 @@ type IProps = {
   galleries: IGallery[];
 };
 
-const News: NextPage<IProps> = ({ posts, general }: IProps) => {
+const News: NextPage<IProps> = ({ posts, general, bands, galleries }: IProps) => {
   const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -47,7 +47,7 @@ const News: NextPage<IProps> = ({ posts, general }: IProps) => {
   }, []);
 
   return (
-    <Layout general={general} inverse>
+    <Layout general={general} bands={bands} galleries={galleries} inverse>
       <div>
         <Head>
           <title>{general?.attributes.metaTitle}</title>
