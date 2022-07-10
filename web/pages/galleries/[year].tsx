@@ -20,8 +20,9 @@ export async function getStaticProps({ params }: any) {
   const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
   const { data: galleries } = await galleriesResponse.json();
 
-  const galleriesOfThisYearResponse = await fetch(`${URL}/api/bands?populate=*&filters[year][$eq]=${params.year}`);
+  const galleriesOfThisYearResponse = await fetch(`${URL}/api/galleries?populate=*&filters[year][$eq]=${params.year}`);
   const { data: galleriesOfThisYear } = await galleriesOfThisYearResponse.json();
+  console.log(galleriesOfThisYear);
 
   return {
     props: { general, bands, galleries, galleriesOfThisYear },
