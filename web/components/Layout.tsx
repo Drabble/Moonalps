@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { IGeneral } from '../types';
+import { IBand, IGallery, IGeneral } from '../types';
 import Image from 'next/image';
 import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
@@ -8,14 +8,22 @@ import Footer from './Footer';
 
 type IProps = {
   general: IGeneral;
+  bands: IBand[];
+  galleries: IGallery[];
   onScroll?: (_: number) => void;
   // eslint-disable-next-line no-undef
   children: JSX.Element;
   inverse: boolean;
 };
-const Layout: React.FC<IProps> = ({ general, onScroll, children, inverse }) => {
+
+const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, children, inverse }) => {
   const [scroll, setScroll] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
+
+  const [galleryYears, setGalleryYears] = useState(
+    [...new Set(galleries.map((gallery: IGallery) => gallery.attributes.year))].sort((a: number, b: number) => b - a)
+  );
+  const [bandYears, setBandYears] = useState([...new Set(bands.map((band: IBand) => band.attributes.year))].sort((a: number, b: number) => b - a));
 
   const changeScroll = () => {
     setScroll(window.scrollY);
@@ -76,26 +84,40 @@ const Layout: React.FC<IProps> = ({ general, onScroll, children, inverse }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/lineup">
-                  <a>LINEUP</a>
-                </Link>
-              </li>
-              <li>
                 <div className="dropdown relative">
-                  <button className="text-dark-200">LINEUP</button>
+                  <button className="font-medium text-dark-200">LINEUP</button>
                   <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
-                    <li className="">
-                      <Link href="/lineup/2022">
-                        <a className="block p-4 w-full">2022</a>
-                      </Link>
-                    </li>
+                    {bandYears.map((year) => (
+                      <li className="" key={year}>
+                        <Link href={`/lineup/${year}`}>
+                          <a className="block p-4 w-full">{year}</a>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </li>
               <li>
-                <Link href="/about">
-                  <a>LE FESTIVAL</a>
-                </Link>
+                <div className="dropdown relative">
+                  <button className="font-medium text-dark-200">LE FESTIVAL</button>
+                  <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
+                    <li>
+                      <Link href="/about">
+                        <a className="block p-4 w-full">À PROPOS</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/info">
+                        <a className="block p-4 w-full">INFOS PRATIQUES</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/contact">
+                        <a className="block p-4 w-full">CONTACT</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li>
                 <Link href="/tickets">
@@ -103,14 +125,18 @@ const Layout: React.FC<IProps> = ({ general, onScroll, children, inverse }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/gallery">
-                  <a>ANCIENNES EDITIONS</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact">
-                  <a>CONTACT</a>
-                </Link>
+                <div className="dropdown relative">
+                  <button className="font-medium text-dark-200">GALLERIE</button>
+                  <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
+                    {galleryYears.map((year) => (
+                      <li className="" key={year}>
+                        <Link href={`/galleries/${year}`}>
+                          <a className="block p-4 w-full">{year}</a>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
               <li className="flex justify-start mt-4 mb-4 items-center gap-2 text-xl">
                 <a href={general?.attributes.youtubeUrl} rel="noreferrer" target="_blank">

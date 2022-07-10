@@ -11,20 +11,28 @@ import Tree from '../assets/Tree.svg';
 const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
+  const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
+  const { data: bands } = await bandsResponse.json();
+
+  const generalResponse = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await generalResponse.json();
+
+  const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
+  const { data: galleries } = await galleriesResponse.json();
+
   const res = await fetch(`${URL}/api/posts?populate=*`);
   const { data: posts } = await res.json();
 
-  const res3 = await fetch(`${URL}/api/general?populate=*`);
-  const { data: general } = await res3.json();
-
   return {
-    props: { posts, general },
+    props: { general, bands, galleries, posts },
   };
 }
 
 type IProps = {
   posts: IPost[];
   general: IGeneral;
+  bands: IBand[];
+  galleries: IGallery[];
 };
 
 const News: NextPage<IProps> = ({ posts, general }: IProps) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { IGeneral } from '../types';
+import { IBand, IGallery, IGeneral } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
 import Tree from '../assets/Tree.svg';
@@ -9,37 +9,39 @@ import Tree from '../assets/Tree.svg';
 const URL = process.env.STRAPI_URL;
 
 export async function getStaticProps() {
-  const res = await fetch(`${URL}/api/general?populate=*`);
-  const { data: general } = await res.json();
+  const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
+  const { data: bands } = await bandsResponse.json();
+
+  const generalResponse = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await generalResponse.json();
+
+  const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
+  const { data: galleries } = await galleriesResponse.json();
 
   return {
-    props: { general },
+    props: { general, bands, galleries },
   };
 }
 
 type IProps = {
-  general: IGeneral,
-}
+  general: IGeneral;
+  bands: IBand[];
+  galleries: IGallery[];
+};
 
-const Contact: NextPage<IProps> = ({ general }: IProps) => {
+const Contact: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
   const [scroll, setScroll] = useState(0);
   return (
-    <Layout general={general} onScroll={(value) => setScroll(value)} inverse>
+    <Layout general={general} bands={bands} galleries={galleries} onScroll={(value) => setScroll(value)} inverse>
       <div>
         <Head>
           <title>{general?.attributes.metaTitle}</title>
-          <meta
-            name="description"
-            content={general?.attributes.metaDescription}
-          />
+          <meta name="description" content={general?.attributes.metaDescription} />
         </Head>
 
         <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-            <Tree
-              className="w-full stroke-dark-200 fill-transparent"
-              style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }}
-            />
+            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28">CONTACT</p>
@@ -88,14 +90,15 @@ const Contact: NextPage<IProps> = ({ general }: IProps) => {
                   <br />
                   <a className="text-tertiary" itemProp="email" href={`mailto:${general?.attributes.contactEmail}`}>
                     {general?.attributes.contactEmail}
-                  </a>
-                  {' '}
+                  </a>{' '}
                   <br />
                 </p>
                 <p>
                   <span className="font-bold">Téléphone</span>
                   <br />
-                  <a className="text-tertiary" href={`tel:${general?.attributes.contactPhone}`}>{general?.attributes.contactPhone}</a>
+                  <a className="text-tertiary" href={`tel:${general?.attributes.contactPhone}`}>
+                    {general?.attributes.contactPhone}
+                  </a>
                 </p>
 
                 <a className="text-tertiary" itemProp="email" href={`mailto:${general?.attributes.postulationEmail}`}>
@@ -105,7 +108,6 @@ const Contact: NextPage<IProps> = ({ general }: IProps) => {
                   <span className="font-bold">Président</span>
                   <br />
                   {general?.attributes.president}
-
                 </p>
               </div>
             </div>

@@ -1,3 +1,6 @@
+
+import { getStaticPaths } from '../lineup/[year]'
+
 export default async function handler(req: any, res: any) {
     // Check for secret to confirm this is a valid request
     if (req.query.secret !== process.env.REVALIDATE_SECRET) {
@@ -12,6 +15,15 @@ export default async function handler(req: any, res: any) {
       await res.unstable_revalidate('/lineup')
       await res.unstable_revalidate('/news')
       await res.unstable_revalidate('/tickets')
+      // grab static paths using the same method Next.js would use
+    const staticPaths : any = await getStaticPaths()
+    // get an array of promises
+    const revalidatePaths = staticPaths.map((path: any) =>
+          res.unstable_revalidate(`/articles/${path.params.slug}`)
+    );
+
+    // run revalidation in parallel
+    await Promise.all(revalidatePaths);
       return res.json({ revalidated: true })
     } catch (err) {
       // If there was an error, Next.js will continue

@@ -25,12 +25,14 @@ export interface IBand {
         createdAt: string
         locale: string
         publishedAt: string
-        updatedAt: string}
+        updatedAt: string,
+        year: number
+    }
 }
 export interface IGallery {
     id: number,
     attributes: {
-        year: string
+        year: number
         credits: string
         videos: {
             data: [IImage]
@@ -63,6 +65,18 @@ export interface IGeneral {
         locale: string
         publishedAt: string
         updatedAt: string}
+}
+export interface IInfo {
+    id: number,
+    attributes: {
+        date: string
+        transport: string
+        sleep: string
+        foodAndBeverage: string
+        tickets: string
+        accessibility: string
+        healthAndSafety: string
+    }
 }
 export interface ISponsor {
     id: number,

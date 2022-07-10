@@ -2,34 +2,42 @@ import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { IGeneral, IPartner, ISponsor } from '../types';
+import { IBand, IGallery, IGeneral, IPartner, ISponsor } from '../types';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
 
 const URL = process.env.STRAPI_URL;
 
-type IProps = {
-  sponsors: ISponsor[];
-  partners: IPartner[];
-  general: IGeneral;
-};
-
 export async function getStaticProps() {
+  const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
+  const { data: bands } = await bandsResponse.json();
+
+  const generalResponse = await fetch(`${URL}/api/general?populate=*`);
+  const { data: general } = await generalResponse.json();
+
+  const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
+  const { data: galleries } = await galleriesResponse.json();
+
   const res = await fetch(`${URL}/api/sponsors?populate=*`);
   const { data: sponsors } = await res.json();
 
   const res2 = await fetch(`${URL}/api/partners?populate=*`);
   const { data: partners } = await res2.json();
 
-  const res3 = await fetch(`${URL}/api/general?populate=*`);
-  const { data: general } = await res3.json();
-
   return {
-    props: { sponsors, partners, general },
+    props: { general, bands, galleries, sponsors, partners },
   };
 }
 
-const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
+type IProps = {
+  sponsors: ISponsor[];
+  partners: IPartner[];
+  general: IGeneral;
+  bands: IBand[];
+  galleries: IGallery[];
+};
+
+const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries }: IProps) => {
   const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -41,7 +49,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general }: IProps) => {
   }, []);
 
   return (
-    <Layout general={general} onScroll={(value) => setScroll(value)} inverse={false}>
+    <Layout general={general} bands={bands} galleries={galleries} onScroll={(value) => setScroll(value)} inverse={false}>
       <div className="bg-dark-900">
         <Head>
           <title>{general?.attributes.metaTitle}</title>

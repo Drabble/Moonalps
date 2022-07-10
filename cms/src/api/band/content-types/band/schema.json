@@ -4,7 +4,8 @@
   "info": {
     "singularName": "band",
     "pluralName": "bands",
-    "displayName": "Band"
+    "displayName": "Band",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,20 +19,24 @@
       "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "url": {
       "type": "string"
     },
     "video": {
       "type": "string"
+    },
+    "year": {
+      "type": "integer"
     }
   }
 }
