@@ -12,7 +12,6 @@ export default async function handler(req: any, res: any) {
       await res.unstable_revalidate('/')
       await res.unstable_revalidate('/about')
       await res.unstable_revalidate('/contact')
-      await res.unstable_revalidate('/lineup')
       await res.unstable_revalidate('/news')
       await res.unstable_revalidate('/tickets')
       await res.unstable_revalidate('/info')
@@ -21,7 +20,7 @@ export default async function handler(req: any, res: any) {
     const lineupStaticPaths : any = await lineupGetStaticPaths()
     // get an array of promises
     const lineupRevalidatePaths = lineupStaticPaths.map((path: any) =>
-          res.unstable_revalidate(`/articles/${path.params.slug}`)
+          res.unstable_revalidate(`/lineup/${path.params.slug}`)
     );
     await Promise.all(lineupRevalidatePaths);
 
