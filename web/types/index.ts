@@ -115,10 +115,10 @@ export interface IImage {
         width: number,
         height: number,
         formats: {
-        thumbnail: [any],
-        large: [any],
-        medium: [any],
-        small: [any]
+            thumbnail: [any],
+            large: [any],
+            medium: [any],
+            small: [any]
         },
         hash: string,
         ext: string,

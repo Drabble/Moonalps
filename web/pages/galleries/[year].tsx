@@ -7,6 +7,7 @@ import 'moment/locale/fr';
 import Masonry from 'react-masonry-css';
 import Tree from '../../assets/Tree.svg';
 import { useRouter } from 'next/router';
+import Gallery from '../../components/Gallery';
 
 const URL = process.env.STRAPI_URL;
 
@@ -22,7 +23,6 @@ export async function getStaticProps({ params }: any) {
 
   const galleriesOfThisYearResponse = await fetch(`${URL}/api/galleries?populate=*&filters[year][$eq]=${params.year}`);
   const { data: galleriesOfThisYear } = await galleriesOfThisYearResponse.json();
-  console.log(galleriesOfThisYear);
 
   return {
     props: { general, bands, galleries, galleriesOfThisYear },
@@ -46,7 +46,7 @@ type IProps = {
   galleriesOfThisYear: IGallery[];
 };
 
-const Gallery: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThisYear }: IProps) => {
+const Galleries: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThisYear }: IProps) => {
   const router = useRouter();
   const { year } = router.query;
   const [scroll, setScroll] = useState(0);
@@ -66,15 +66,7 @@ const Gallery: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThisY
             <p className="text-center text-8xl mt-28 mb-28">GALLERIE {year}</p>
             <div className="flex flex-col gap-2 justify-center">
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
-                <Masonry breakpointCols={3} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                  {galleriesOfThisYear.map((gallery, i) =>
-                    gallery.attributes.pictures?.data.map((picture: IImage, j: number) => (
-                      <div key={i + '' + j} className="col-span-2">
-                        <img src={`${picture.attributes.url}`} alt="Photo" />
-                      </div>
-                    ))
-                  )}
-                </Masonry>
+                <Gallery pictures={galleriesOfThisYear.flatMap((gallery) => gallery.attributes.pictures?.data)} />
               </div>
             </div>
           </div>
@@ -84,4 +76,4 @@ const Gallery: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThisY
   );
 };
 
-export default Gallery;
+export default Galleries;

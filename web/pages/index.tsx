@@ -43,7 +43,6 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener('resize', () => {
-      console.log(window.innerHeight, window.innerWidth);
       setWidth(window.innerWidth);
     });
   }, []);

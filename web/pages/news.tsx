@@ -41,7 +41,6 @@ const News: NextPage<IProps> = ({ posts, general, bands, galleries }: IProps) =>
   useEffect(() => {
     setWidth(window.innerWidth);
     window.addEventListener('resize', () => {
-      console.log(window.innerHeight, window.innerWidth);
       setWidth(window.innerWidth);
     });
   }, []);
