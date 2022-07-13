@@ -14,7 +14,14 @@ const Images = ({ pictures }: IProps) => {
       <Gallery withDownloadButton withCaption>
         <Masonry breakpointCols={3} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
           {pictures.map((picture) => (
-            <Item key={picture.id} original={picture.attributes.url} thumbnail={picture.attributes.url} alt={picture.attributes.caption}>
+            <Item
+              key={picture.id}
+              original={picture.attributes.url}
+              thumbnail={picture.attributes.formats.thumbnail.url}
+              alt={picture.attributes.caption}
+              width={picture.attributes.width}
+              height={picture.attributes.height}
+            >
               {({ ref, open }) => (
                 <img style={{ cursor: 'pointer' }} src={picture.attributes.url} ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open} />
               )}
