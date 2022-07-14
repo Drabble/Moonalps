@@ -1,6 +1,7 @@
 
 import { getStaticPaths as lineupGetStaticPaths } from '../lineup/[year]'
 import { getStaticPaths as galleriesGetStaticPaths } from '../galleries/[year]'
+import { IGallery } from '../../types'
 
 export default async function handler(req: any, res: any) {
     // Check for secret to confirm this is a valid request
@@ -16,17 +17,19 @@ export default async function handler(req: any, res: any) {
       await res.unstable_revalidate('/tickets')
       await res.unstable_revalidate('/info')
 
-      // grab static paths using the same method Next.js would use
-    const lineupStaticPaths : any = await lineupGetStaticPaths();
-    // get an array of promises
-    const lineupRevalidatePaths = lineupStaticPaths.paths.foreach((path: any) =>
-          res.unstable_revalidate(`/lineup/${path.params.year}`)
-    );
 
-      // grab static paths using the same method Next.js would use
-      const galleriesStaticPaths : any = await galleriesGetStaticPaths();
-      const galleriesRevalidatePaths = galleriesStaticPaths.paths.foreach((path: any) =>
-            res.unstable_revalidate(`/galleries/${path.params.year}`)
+      const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
+      const { data: bands } = await bandsResponse.json();
+      let years = [...new Set(bands.map((gallery: IGallery) => gallery.attributes.year))];
+      years.forEach((year: any) =>
+            res.unstable_revalidate(`/lineup/${year}`)
+      );
+      
+      const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
+      const { data: galleries } = await galleriesResponse.json();
+      years = [...new Set(galleries.map((gallery: IGallery) => gallery.attributes.year))];
+      years.forEach((year: any) =>
+            res.unstable_revalidate(`/galleries/${year}`)
       );
 
       return res.json({ revalidated: true })
