@@ -5,6 +5,7 @@ import { IBand, IGallery, IGeneral } from '../types';
 import Layout from '../components/Layout';
 import 'moment/locale/fr';
 import Tree from '../assets/Tree.svg';
+import ContactForm from '../components/ContactForm';
 
 const URL = process.env.STRAPI_URL;
 
@@ -19,7 +20,7 @@ export async function getStaticProps() {
   const { data: galleries } = await galleriesResponse.json();
 
   return {
-    props: { general, bands, galleries },
+    props: { general, bands, galleries, url: URL },
   };
 }
 
@@ -27,10 +28,12 @@ type IProps = {
   general: IGeneral;
   bands: IBand[];
   galleries: IGallery[];
+  url: string;
 };
 
-const Contact: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
+const Contact: NextPage<IProps> = ({ general, bands, galleries, url }: IProps) => {
   const [scroll, setScroll] = useState(0);
+
   return (
     <Layout general={general} bands={bands} galleries={galleries} onScroll={(value) => setScroll(value)} inverse>
       <div>
@@ -48,7 +51,7 @@ const Contact: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
               <div className="sm:col-span-2">
                 <h1>Écris-nous !</h1>
-                <div className="mb-4">
+                {/*  <div className="mb-4">
                   <label>
                     <p className="mb-2">
                       Nom
@@ -81,7 +84,8 @@ const Contact: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
                     <textarea rows={20} required aria-required="true" className="w-full p-2 border border-dark-900" />
                   </label>
                 </div>
-                <button className="p-4 bg-black text-white rounded-md float-right">Envoyer</button>
+  <button className="p-4 bg-black text-white rounded-md float-right">Envoyer</button>*/}
+                <ContactForm url={url} />
               </div>
               <div className="text-lg flex flex-col gap-2 p-4 border-dark-800">
                 <h1>Contact</h1>
