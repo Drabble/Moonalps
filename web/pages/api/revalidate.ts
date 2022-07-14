@@ -16,17 +16,23 @@ export default async function handler(req: any, res: any) {
     await res.unstable_revalidate('/tickets');
     await res.unstable_revalidate('/info');
 
+    console.log(`Fetching bands`);
     const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
     const { data: bands } = await bandsResponse.json();
     let years = [...new Set(bands.map((band: IBand) => band.attributes.year))];
+    console.log(`Revalidation years ${years}`);
     for(const year of years){
+      console.log(`Revalidate lineup ${year}`);
       await res.unstable_revalidate(`/lineup/${year}`);
     }
 
+    console.log(`Fetching galleries`);
     const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
     const { data: galleries } = await galleriesResponse.json();
     years = [...new Set(galleries.map((gallery: IGallery) => gallery.attributes.year))];
+    console.log(`Revalidation years ${years}`);
     for(const year of years){
+      console.log(`Revalidate gallery ${year}`);
       await res.unstable_revalidate(`/galleries/${year}`);
     }
 
