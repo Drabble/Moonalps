@@ -1,6 +1,6 @@
 import { getStaticPaths as lineupGetStaticPaths } from '../lineup/[year]';
 import { getStaticPaths as galleriesGetStaticPaths } from '../galleries/[year]';
-import { IGallery } from '../../types';
+import { IBand, IGallery } from '../../types';
 
 export default async function handler(req: any, res: any) {
   // Check for secret to confirm this is a valid request
@@ -18,19 +18,17 @@ export default async function handler(req: any, res: any) {
 
     const bandsResponse = await fetch(`${URL}/api/bands?populate=*`);
     const { data: bands } = await bandsResponse.json();
-    let years = [...new Set(bands.map((gallery: IGallery) => gallery.attributes.year))];
-    years.forEach((year: any) => {
-      res.unstable_revalidate(`/lineup/${year}`);
-      console.log(`Revalidate /galleries/${year}`);
-    });
+    let years = [...new Set(bands.map((band: IBand) => band.attributes.year))];
+    for(const year of years){
+      await res.unstable_revalidate(`/lineup/${year}`);
+    }
 
     const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
     const { data: galleries } = await galleriesResponse.json();
     years = [...new Set(galleries.map((gallery: IGallery) => gallery.attributes.year))];
-    years.forEach((year: any) => {
-      res.unstable_revalidate(`/galleries/${year}`);
-      console.log(`Revalidate /galleries/${year}`);
-    });
+    for(const year of years){
+      await res.unstable_revalidate(`/galleries/${year}`);
+    }
 
     return res.json({ revalidated: true });
   } catch (err) {
