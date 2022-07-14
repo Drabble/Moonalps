@@ -1,6 +1,6 @@
-import { getStaticPaths as lineupGetStaticPaths } from '../lineup/[year]';
-import { getStaticPaths as galleriesGetStaticPaths } from '../galleries/[year]';
 import { IBand, IGallery } from '../../types';
+
+const URL = process.env.STRAPI_URL;
 
 export default async function handler(req: any, res: any) {
   // Check for secret to confirm this is a valid request
