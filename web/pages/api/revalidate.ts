@@ -17,19 +17,17 @@ export default async function handler(req: any, res: any) {
       await res.unstable_revalidate('/info')
 
       // grab static paths using the same method Next.js would use
-    const lineupStaticPaths : any = await lineupGetStaticPaths()
+    const lineupStaticPaths : any = await lineupGetStaticPaths();
     // get an array of promises
-    const lineupRevalidatePaths = lineupStaticPaths.paths.map((path: any) =>
+    const lineupRevalidatePaths = lineupStaticPaths.paths.foreach((path: any) =>
           res.unstable_revalidate(`/lineup/${path.params.year}`)
     );
-    await Promise.all(lineupRevalidatePaths);
 
       // grab static paths using the same method Next.js would use
-      const galleriesStaticPaths : any = await galleriesGetStaticPaths()
-      const galleriesRevalidatePaths = galleriesStaticPaths.paths.map((path: any) =>
+      const galleriesStaticPaths : any = await galleriesGetStaticPaths();
+      const galleriesRevalidatePaths = galleriesStaticPaths.paths.foreach((path: any) =>
             res.unstable_revalidate(`/galleries/${path.params.year}`)
       );
-      await Promise.all(galleriesRevalidatePaths);
 
       return res.json({ revalidated: true })
     } catch (err) {

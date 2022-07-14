@@ -66,19 +66,23 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
                 <div key={i} className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
                   <p className="text-6xl text-center mb-8 mt-8">{band.attributes.name}</p>
                   <div className="grid grid-cols-3 gap-4 mb-16">
-                    <div className="hidden sm:block col-span-3 sm:col-span-1">
-                      <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
-                      <div className="mt-4 text-center ">
-                        <a href={band.attributes.url}>{band.attributes.url}</a>
-                      </div>
-                    </div>
-                    <div className="col-span-3 sm:col-span-2">
-                      <div className="sm:hidden mb-4">
+                    {band.attributes.image && (
+                      <div className="hidden sm:block col-span-3 sm:col-span-1">
                         <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
                         <div className="mt-4 text-center ">
                           <a href={band.attributes.url}>{band.attributes.url}</a>
                         </div>
                       </div>
+                    )}
+                    <div className="col-span-3 sm:col-span-2">
+                      {band.attributes.image && (
+                        <div className="sm:hidden mb-4">
+                          <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
+                          <div className="mt-4 text-center ">
+                            <a href={band.attributes.url}>{band.attributes.url}</a>
+                          </div>
+                        </div>
+                      )}
                       <p className="text-xl font-light">{band.attributes.description}</p>
                       {band.attributes.video && (
                         <div className="mt-4">
