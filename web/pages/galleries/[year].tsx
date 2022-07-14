@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { IGeneral, IGallery, IImage, IBand } from '../../types';
 import Layout from '../../components/Layout';
 import 'moment/locale/fr';
-import Masonry from 'react-masonry-css';
 import Tree from '../../assets/Tree.svg';
 import { useRouter } from 'next/router';
 import Gallery from '../../components/Gallery';
@@ -66,7 +65,7 @@ const Galleries: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThi
             <p className="text-center text-8xl mt-28 mb-28">GALLERIE {year}</p>
             <div className="flex flex-col gap-2 justify-center">
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
-                <Gallery pictures={galleriesOfThisYear.flatMap((gallery) => gallery.attributes.pictures?.data)} />
+                <Gallery pictures={galleriesOfThisYear.flatMap((gallery) => gallery.attributes.pictures?.data || [])} />
               </div>
             </div>
           </div>
