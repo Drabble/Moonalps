@@ -86,56 +86,64 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
               <li>
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">LINEUP</button>
-                  <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
-                    {bandYears.map((year) => (
-                      <li className="" key={year}>
-                        <Link href={`/lineup/${year}`}>
-                          <a className="block p-4 w-full">{year}</a>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="dropdown-menu absolute hidden">
+                    <ul className=" bg-dark-900 border-4 border-dark-800 mt-2">
+                      {bandYears.map((year) => (
+                        <li className="" key={year}>
+                          <Link href={`/lineup/${year}`}>
+                            <a className="block p-4 w-full">{year}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </li>
               <li>
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">LE FESTIVAL</button>
-                  <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
-                    <li>
-                      <Link href="/about">
-                        <a className="block p-4 w-full">À PROPOS</a>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/info">
-                        <a className="block p-4 w-full">INFOS PRATIQUES</a>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">
-                        <a className="block p-4 w-full">CONTACT</a>
-                      </Link>
-                    </li>
-                  </ul>
+                  <div className="dropdown-menu absolute hidden">
+                    <ul className=" bg-dark-900 border-4 border-dark-800 mt-2">
+                      <li>
+                        <Link href="/about">
+                          <a className="block p-4 w-full">À PROPOS</a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/info">
+                          <a className="block p-4 w-full">INFOS PRATIQUES</a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/contact">
+                          <a className="block p-4 w-full">CONTACT</a>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
-              <li>
-                <Link href="/tickets">
-                  <a>BILLETERIE</a>
-                </Link>
-              </li>
+              {general?.attributes.enableTickets && (
+                <li>
+                  <Link href="/tickets">
+                    <a>BILLETERIE</a>
+                  </Link>
+                </li>
+              )}
               <li>
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">GALLERIE</button>
-                  <ul className="dropdown-menu absolute hidden bg-dark-900 border-4 border-dark-800 w-48">
-                    {galleryYears.map((year) => (
-                      <li className="" key={year}>
-                        <Link href={`/galleries/${year}`}>
-                          <a className="block p-4 w-full">{year}</a>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="dropdown-menu absolute hidden">
+                    <ul className=" bg-dark-900 border-4 border-dark-800 mt-2">
+                      {galleryYears.map((year) => (
+                        <li className="" key={year}>
+                          <Link href={`/galleries/${year}`}>
+                            <a className="block p-4 w-full">{year}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </li>
               <li className="flex justify-start mt-4 mb-4 items-center gap-2 text-xl">

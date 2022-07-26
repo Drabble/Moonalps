@@ -28,6 +28,11 @@
         "videos",
         "audios"
       ]
+    },
+    "principal": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

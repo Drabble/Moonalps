@@ -50,6 +50,9 @@
     },
     "about": {
       "type": "richtext"
+    },
+    "enableTickets": {
+      "type": "boolean"
     }
   }
 }

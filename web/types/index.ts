@@ -64,7 +64,8 @@ export interface IGeneral {
         createdAt: string
         locale: string
         publishedAt: string
-        updatedAt: string}
+        updatedAt: string,
+        enableTickets: boolean}
 }
 export interface IInfo {
     id: number,
@@ -86,6 +87,7 @@ export interface ISponsor {
             data: IImage
         }
         url: string 
+        principal: boolean
         createdAt: string
         locale: string
         publishedAt: string

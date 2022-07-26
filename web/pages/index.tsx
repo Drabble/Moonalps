@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { IBand, IGallery, IGeneral, IPartner, ISponsor } from '../types';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
+import Link from 'next/link';
 
 const URL = process.env.STRAPI_URL;
 
@@ -56,8 +57,8 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
         </Head>
 
         <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16 relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
-            <Tree className="w-full stroke-dark-800 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
+            <Tree className="w-full stroke-dark-800 fill-transparent" style={{ height: '50rem', transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <Image src="/cover_full.svg" alt="Logo" width={1200} height={400} />
           {/* <div
@@ -75,39 +76,72 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
         </div>
 
         <div className="bg-dark-100 text-dark-900 min-h-screen flex justify-center items-center p-2 relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
-            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }} />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden">
+            <Tree
+              className="w-full stroke-dark-200 fill-transparent"
+              style={{ height: '50rem', transform: `translate(-${scroll / 15}px, ${scroll / 15}px)` }}
+            />
           </div>
           <div className="text-center -mt-2 relative">
-            <p className="text-9xl mb-16">
+            <p className="text-9xl mb-24">
               Une 3<sup>ème</sup> édition sur 2 jours !
             </p>
+            <div className="flex flex-wrap justify-center gap-1">
+              <Link href="/lineup/2022">
+                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Voir la lineup 2022</a>
+              </Link>
+              <Link href="/lineup/2022">
+                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Voir les infos pratiques</a>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="bg-dark-900 text-primary w-full p-16 fill-blue-500 relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
-            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden">
+            <Tree
+              className="-ml-24 -mt-48 w-full stroke-dark-200 fill-transparent"
+              style={{ height: '50rem', transform: `translate(${scroll / 25}px, ${scroll / 25}px)` }}
+            />
           </div>
           <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">SPONSORS</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
-                {sponsors.map((sponsor, i) => (
-                  <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
-                    <img src={`${sponsor.attributes.logo.data.attributes.url}`} alt={sponsor.attributes.name} className="w-60" />
-                    {/* <p className=" text-sm">
+                {sponsors
+                  .filter((sponsor) => sponsor.attributes.principal)
+                  .map((sponsor, i) => (
+                    <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                      <img src={`${sponsor.attributes.logo.data?.attributes.url}`} alt={sponsor.attributes.name} className="w-96" />
+                      {/* <p className=" text-sm">
                       {sponsor.attributes.name}
                 </p> */}
-                  </a>
-                ))}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <div className="flex flex-col items-center mb-8">
+              <div className="flex justify-center p-4 gap-8 flex-wrap">
+                {sponsors
+                  .filter((sponsor) => !sponsor.attributes.principal)
+                  .map((sponsor, i) => (
+                    <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                      <img src={`${sponsor.attributes.logo.data?.attributes.url}`} alt={sponsor.attributes.name} className="w-60" />
+                      {/* <p className=" text-sm">
+                      {sponsor.attributes.name}
+                </p> */}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>
         </div>
 
         <div className="bg-dark-100 text-primary w-full p-16 relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex">
-            <Tree className="w-full stroke-dark-800 fill-transparent" style={{ transform: `translate(-${scroll / 10}px, ${scroll / 10}px)` }} />
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden">
+            <Tree
+              className="-mr-24 -mt-48 w-full stroke-dark-200 fill-transparent"
+              style={{ height: '50rem', transform: `translate(${-scroll / 30}px, ${scroll / 30}px)` }}
+            />
           </div>
           <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
             <p className="text-6xl mb-16">PARTENAIRES</p>

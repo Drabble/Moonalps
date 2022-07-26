@@ -44,7 +44,7 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
         </Head>
 
         <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
@@ -55,8 +55,8 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
                 <ReactMarkdown>{info?.attributes.transport}</ReactMarkdown>
 
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21990.331813895922!2d6.268520421094685!3d46.452828613988856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c445658efd4a3%3A0x4b2cf936e7b1b5a8!2sBursins!5e0!3m2!1sen!2sch!4v1650235559671!5m2!1sen!2sch"
-                  className="w-full border-0"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10995.779475979833!2d6.2944797!3d46.4497894!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf9a8081e32006c7!2sMoonAlps%20Festival!5e0!3m2!1sen!2sch!4v1658858359793!5m2!1sen!2sch"
+                  className="h-96 w-full border-0"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

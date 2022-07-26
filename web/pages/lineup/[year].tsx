@@ -18,7 +18,7 @@ export async function getStaticProps({ params }: any) {
   const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
   const { data: galleries } = await galleriesResponse.json();
 
-  const bandsOfThisYearResponse = await fetch(`${URL}/api/bands?populate=*&filters[year][$eq]=${params.year}`);
+  const bandsOfThisYearResponse = await fetch(`${URL}/api/bands?populate=*&filters[year][$eq]=${params.year}&sort=position`);
   const { data: bandsOfThisYear } = await bandsOfThisYearResponse.json();
 
   return {
@@ -56,7 +56,7 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
         </Head>
 
         <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
@@ -68,18 +68,26 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
                   <div className="grid grid-cols-3 gap-4 mb-16">
                     {band.attributes.image.data && (
                       <div className="hidden sm:block col-span-3 sm:col-span-1">
-                        <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
+                        <a href={band.attributes.url}>
+                          <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
+                        </a>
                         <div className="mt-4 text-center ">
-                          <a href={band.attributes.url}>{band.attributes.url}</a>
+                          <a href={band.attributes.url} className="text-dark-900">
+                            {band.attributes.url}
+                          </a>
                         </div>
                       </div>
                     )}
                     <div className="col-span-3 sm:col-span-2">
                       {band.attributes.image.data && (
                         <div className="sm:hidden mb-4">
-                          <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
+                          <a href={band.attributes.url}>
+                            <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
+                          </a>
                           <div className="mt-4 text-center ">
-                            <a href={band.attributes.url}>{band.attributes.url}</a>
+                            <a href={band.attributes.url} className="text-dark-900">
+                              {band.attributes.url}
+                            </a>
                           </div>
                         </div>
                       )}

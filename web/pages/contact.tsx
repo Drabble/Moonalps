@@ -43,7 +43,7 @@ const Contact: NextPage<IProps> = ({ general, bands, galleries, url }: IProps) =
         </Head>
 
         <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">

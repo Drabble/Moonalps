@@ -37,6 +37,11 @@
     },
     "year": {
       "type": "integer"
+    },
+    "position": {
+      "type": "integer",
+      "default": 0,
+      "required": true
     }
   }
 }
