@@ -68,11 +68,11 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
                   <div className="grid grid-cols-3 gap-4 mb-16">
                     {band.attributes.image.data && (
                       <div className="hidden sm:block col-span-3 sm:col-span-1">
-                        <a href={band.attributes.url}>
+                        <a target="blank" href={band.attributes.url}>
                           <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
                         </a>
                         <div className="mt-4 text-center ">
-                          <a href={band.attributes.url} className="text-dark-900">
+                          <a href={band.attributes.url} target="blank" className="text-dark-900">
                             {band.attributes.url}
                           </a>
                         </div>
@@ -81,11 +81,11 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
                     <div className="col-span-3 sm:col-span-2">
                       {band.attributes.image.data && (
                         <div className="sm:hidden mb-4">
-                          <a href={band.attributes.url}>
+                          <a target="blank" href={band.attributes.url}>
                             <img src={`${band.attributes.image.data?.attributes.url}`} alt="Logo" className="w-full" />
                           </a>
                           <div className="mt-4 text-center ">
-                            <a href={band.attributes.url} className="text-dark-900">
+                            <a href={band.attributes.url} target="blank" className="text-dark-900">
                               {band.attributes.url}
                             </a>
                           </div>
