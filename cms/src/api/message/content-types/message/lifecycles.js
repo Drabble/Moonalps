@@ -6,14 +6,13 @@ module.exports = {
     const { result } = event;
 
     try {
-      strapi
-        .service("api::mail.mail")
-        .send(
-          mailFrom,
-          mailTo,
-          "Welcome",
-          `A product has been created ${JSON.stringify(result)}`
-        );
+      strapi.service("api::mail.mail").send(
+        mailFrom,
+        mailTo,
+        "Nouveau message sur le formulaire de contact moonalps.ch",
+        `Il y a un nouveau message du formulaire de contact moonalps.ch!\n
+           Le contenu du message est le suivant: ${JSON.stringify(result)}`
+      );
       /*await strapi.plugins['email'].services.email.send(
                 {
                     to: 'antoine.drabble@gmail.com',

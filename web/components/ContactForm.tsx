@@ -9,6 +9,7 @@ const ContactForm = ({ url }: IProps) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -18,16 +19,18 @@ const ContactForm = ({ url }: IProps) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ data: { name, message, email } }),
+      body: JSON.stringify({ data: { name, message, email, phone } }),
     })
-      .then(() => setStatus("We'll be in touch soon."))
-      .catch((err) => setStatus(err.toString()));
+      .then(() => setStatus('Merci pour votre message, nous vous répondrons le plus vite possible.'))
+      .catch((err) =>
+        setStatus('Désolé, il y a eu une erreur lors de la soumission du formulaire. Veuillez envoyer un email à info@moonalps.ch directement, merci!')
+      );
   };
 
   if (status) {
     return (
       <>
-        <div className="text-2xl">Thank you!</div>
+        <div className="text-2xl">Merci!</div>
         <div className="text-md">{status}</div>
       </>
     );
@@ -38,11 +41,11 @@ const ContactForm = ({ url }: IProps) => {
       <div className="mb-3 pt-0">
         <input
           type="text"
-          placeholder="Your name"
+          placeholder="Nom"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
@@ -53,26 +56,36 @@ const ContactForm = ({ url }: IProps) => {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
       <div className="mb-3 pt-0">
         <textarea
-          placeholder="Your message"
+          placeholder="Message"
           name="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
           required
         />
       </div>
       <div className="mb-3 pt-0">
+        <input
+          type="phone"
+          placeholder="Numéro de téléphone"
+          name="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
+        />
+      </div>
+      <div className="mb-3 pt-0">
         <button
-          className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-dark-900 text-dark-100 active:bg-dark-600 font-bold uppercase text-sm px-6 py-3 rounded  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="submit"
         >
-          Send a message
+          Envoyer le message
         </button>
       </div>
     </form>
