@@ -61,16 +61,6 @@ const ContactForm = ({ url }: IProps) => {
         />
       </div>
       <div className="mb-3 pt-0">
-        <textarea
-          placeholder="Message"
-          name="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
-          required
-        />
-      </div>
-      <div className="mb-3 pt-0">
         <input
           type="phone"
           placeholder="Numéro de téléphone"
@@ -78,6 +68,16 @@ const ContactForm = ({ url }: IProps) => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
+        />
+      </div>
+      <div className="mb-3 pt-0">
+        <textarea
+          placeholder="Message"
+          name="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="p-3 placeholder-gray-600 text-dark-900 relative bg-white text-md border-0 outline-none focus:outline-none focus:ring w-full"
+          required
         />
       </div>
       <div className="mb-3 pt-0">
