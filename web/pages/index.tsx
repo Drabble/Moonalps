@@ -91,7 +91,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
                 <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Lineup 2022</a>
               </Link>
               <Link href="/tickets">
-                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Billeterie</a>
+                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Billetterie</a>
               </Link>
             </div>
           </div>

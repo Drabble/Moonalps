@@ -71,7 +71,7 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
                 <ReactMarkdown>{info?.attributes.foodAndBeverage}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
-                <h2 className="text-center">Billeterie</h2>
+                <h2 className="text-center">Billetterie</h2>
                 <ReactMarkdown>{info?.attributes.tickets}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">

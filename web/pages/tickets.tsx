@@ -42,7 +42,7 @@ const Tickets: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
-            <p className="text-center text-8xl mt-28 mb-28">BILLETERIE</p>
+            <p className="text-center text-8xl mt-28 mb-28">BILLETTERIE</p>
             <iframe src="//etickets.infomaniak.com/shop/VOwIoSPDPn/" width="100%" height="952px" />
           </div>
         </main>

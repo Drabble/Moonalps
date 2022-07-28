@@ -126,7 +126,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
               {general?.attributes.enableTickets && (
                 <li>
                   <Link href="/tickets">
-                    <a>BILLETERIE</a>
+                    <a>BILLETTERIE</a>
                   </Link>
                 </li>
               )}
