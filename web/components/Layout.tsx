@@ -132,7 +132,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
               )}
               <li>
                 <div className="dropdown relative">
-                  <button className="font-medium text-dark-200">GALLERIE</button>
+                  <button className="font-medium text-dark-200">GALERIE</button>
                   <div className="z-50 dropdown-menu absolute hidden">
                     <ul className=" bg-dark-900 border-4 border-dark-800 mt-2">
                       {galleryYears.map((year) => (

@@ -62,7 +62,7 @@ const Galleries: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThi
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
-            <p className="text-center text-8xl mt-28 mb-28">GALLERIE {year}</p>
+            <p className="text-center text-8xl mt-28 mb-28">GALERIE {year}</p>
             <div className="flex flex-col gap-2 justify-center">
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
                 <Gallery pictures={galleriesOfThisYear.flatMap((gallery) => gallery.attributes.pictures?.data || [])} />
