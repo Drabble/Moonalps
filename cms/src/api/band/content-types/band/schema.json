@@ -42,6 +42,9 @@
       "type": "integer",
       "default": 0,
       "required": true
+    },
+    "style": {
+      "type": "string"
     }
   }
 }

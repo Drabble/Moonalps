@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { IBand, IGallery, IGeneral } from '../types';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
@@ -46,7 +47,7 @@ const About: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28">LE FESTIVAL</p>
             <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
-              <ReactMarkdown>{general?.attributes.about}</ReactMarkdown>
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{general?.attributes.about}</ReactMarkdown>
             </div>
           </div>
         </main>

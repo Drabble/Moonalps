@@ -109,6 +109,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {sponsors
                   .filter((sponsor) => sponsor.attributes.principal)
+                  .sort((a, b) => a.attributes.order - b.attributes.order)
                   .map((sponsor, i) => (
                     <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
                       <img src={`${sponsor.attributes.logo.data?.attributes.url}`} alt={sponsor.attributes.name} className="w-96" />
@@ -123,6 +124,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {sponsors
                   .filter((sponsor) => !sponsor.attributes.principal)
+                  .sort((a, b) => a.attributes.order - b.attributes.order)
                   .map((sponsor, i) => (
                     <a key={i} href={sponsor.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
                       <img src={`${sponsor.attributes.logo.data?.attributes.url}`} alt={sponsor.attributes.name} className="w-60" />
@@ -147,15 +149,33 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
             <p className="text-6xl mb-16">PARTENAIRES</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
-                {partners.map((partner, i) => (
-                  <a key={i} href={partner.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
-                    <img src={`${partner.attributes.logo.data.attributes.url}`} alt={partner.attributes.name} className="w-60" />
-
-                    {/* <p className=" text-sm">
+                {partners
+                  .filter((partner) => !partner.attributes.supporter)
+                  .sort((a, b) => a.attributes.order - b.attributes.order)
+                  .map((partner, i) => (
+                    <a key={i} href={partner.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                      <img src={`${partner.attributes.logo.data?.attributes.url}`} alt={partner.attributes.name} className="w-96" />
+                      {/* <p className=" text-sm">
                       {partner.attributes.name}
                 </p> */}
-                  </a>
-                ))}
+                    </a>
+                  ))}
+              </div>
+            </div>
+            <p className="text-xl mt-8 mb-4">Avec le support de</p>
+            <div className="flex flex-col items-center mb-8">
+              <div className="flex justify-center p-4 gap-8 flex-wrap">
+                {partners
+                  .filter((partner) => partner.attributes.supporter)
+                  .sort((a, b) => a.attributes.order - b.attributes.order)
+                  .map((partner, i) => (
+                    <a key={i} href={partner.attributes.url} rel="noreferrer" target="_blank" className="flex flex-col justify-center items-center">
+                      <img src={`${partner.attributes.logo.data?.attributes.url}`} alt={partner.attributes.name} className="w-60" />
+                      {/* <p className=" text-sm">
+                      {partner.attributes.name}
+                </p> */}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { IBand, IGallery, IGeneral, IInfo } from '../types';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
@@ -52,7 +53,7 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
             <div className=" grid md:grid-cols-2 gap-2 mb-8">
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg">
                 <h2 className="text-center">Transport</h2>
-                <ReactMarkdown>{info?.attributes.transport}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.transport}</ReactMarkdown>
 
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10995.779475979833!2d6.2944797!3d46.4497894!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf9a8081e32006c7!2sMoonAlps%20Festival!5e0!3m2!1sen!2sch!4v1658858359793!5m2!1sen!2sch"
@@ -64,23 +65,27 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
                 <h2 className="text-center">Dormir</h2>
-                <ReactMarkdown>{info?.attributes.sleep}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.sleep}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
                 <h2 className="text-center">Manger/Boire</h2>
-                <ReactMarkdown>{info?.attributes.foodAndBeverage}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.foodAndBeverage}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
                 <h2 className="text-center">Billetterie</h2>
-                <ReactMarkdown>{info?.attributes.tickets}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.tickets}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
                 <h2 className="text-center">Accessibilité</h2>
-                <ReactMarkdown>{info?.attributes.accessibility}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.accessibility}</ReactMarkdown>
               </div>
               <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
                 <h2 className="text-center">Santé & Sécurité</h2>
-                <ReactMarkdown>{info?.attributes.healthAndSafety}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.healthAndSafety}</ReactMarkdown>
+              </div>
+              <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
+                <h2 className="text-center">Stands</h2>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.stands}</ReactMarkdown>
               </div>
             </div>
           </div>

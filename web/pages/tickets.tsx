@@ -43,7 +43,9 @@ const Tickets: NextPage<IProps> = ({ general, bands, galleries }: IProps) => {
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28">BILLETTERIE</p>
-            <iframe src="//etickets.infomaniak.com/shop/VOwIoSPDPn/" width="100%" height="952px" />
+            <div className="bg-white bg-opacity-80">
+              <iframe src="//etickets.infomaniak.com/shop/VOwIoSPDPn/" width="100%" height="700px" />
+            </div>
           </div>
         </main>
       </div>

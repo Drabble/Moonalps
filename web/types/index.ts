@@ -18,6 +18,7 @@ export interface IBand {
         name: string
         description: string
         url: string 
+        style: string
         video: string 
         image: {
             data: IImage
@@ -40,6 +41,7 @@ export interface IGallery {
         pictures: {
             data: [IImage]
         }
+        video: string  
         createdAt: string
         locale: string
         publishedAt: string
@@ -77,6 +79,7 @@ export interface IInfo {
         tickets: string
         accessibility: string
         healthAndSafety: string
+        stands: string
     }
 }
 export interface ISponsor {
@@ -87,6 +90,7 @@ export interface ISponsor {
             data: IImage
         }
         url: string 
+        order: number
         principal: boolean
         createdAt: string
         locale: string
@@ -101,6 +105,8 @@ export interface IPartner {
         logo: {
             data: IImage
         }
+        supporter: boolean
+        order: number
         url: string 
         createdAt: string
         locale: string

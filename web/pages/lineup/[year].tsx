@@ -91,6 +91,7 @@ const Lineup: NextPage<IProps> = ({ bands, general, galleries, bandsOfThisYear }
                           </div>
                         </div>
                       )}
+                      <p className="italic font-light">{band.attributes.style}</p>
                       <p className="text-xl font-light">{band.attributes.description}</p>
                       {band.attributes.video && (
                         <div className="mt-4">

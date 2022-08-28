@@ -26,18 +26,10 @@
         "audios"
       ]
     },
-    "videos": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "credits": {
+      "type": "string"
+    },
+    "video": {
       "type": "string"
     }
   }

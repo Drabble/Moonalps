@@ -20,11 +20,12 @@ export async function getStaticProps({ params }: any) {
   const galleriesResponse = await fetch(`${URL}/api/galleries?populate=*`);
   const { data: galleries } = await galleriesResponse.json();
 
-  const galleriesOfThisYearResponse = await fetch(`${URL}/api/galleries?populate=*&filters[year][$eq]=${params.year}`);
-  const { data: galleriesOfThisYear } = await galleriesOfThisYearResponse.json();
+  const galleryResponse = await fetch(`${URL}/api/galleries?populate=*&filters[year][$eq]=${params.year}`);
+  const { data: galleriesOfThisYear } = await galleryResponse.json();
+  const gallery = galleriesOfThisYear[0];
 
   return {
-    props: { general, bands, galleries, galleriesOfThisYear },
+    props: { general, bands, galleries, gallery },
   };
 }
 
@@ -42,10 +43,10 @@ type IProps = {
   general: IGeneral;
   bands: IBand[];
   galleries: IGallery[];
-  galleriesOfThisYear: IGallery[];
+  gallery: IGallery;
 };
 
-const Galleries: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThisYear }: IProps) => {
+const Galleries: NextPage<IProps> = ({ galleries, general, bands, gallery }: IProps) => {
   const router = useRouter();
   const { year } = router.query;
   const [scroll, setScroll] = useState(0);
@@ -63,11 +64,29 @@ const Galleries: NextPage<IProps> = ({ galleries, general, bands, galleriesOfThi
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28">GALERIE {year}</p>
-            <div className="flex flex-col gap-2 justify-center">
-              <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
-                <Gallery pictures={galleriesOfThisYear.flatMap((gallery) => gallery.attributes.pictures?.data || [])} />
+            {gallery && (
+              <div>
+                <div className="flex flex-col gap-2 justify-center">
+                  <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
+                    {gallery.attributes.video && (
+                      <div className="mb-8">
+                        <div className="relative w-full h-96">
+                          <iframe
+                            className="absolute top-0 left-0 w-full h-full"
+                            src={gallery.attributes.video}
+                            title="Video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <Gallery pictures={gallery.attributes.pictures?.data || []} />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </main>
       </div>
