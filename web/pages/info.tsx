@@ -50,7 +50,7 @@ const About: NextPage<IProps> = ({ general, bands, galleries, info }: IProps) =>
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28 break-words">INFOS PRATIQUES</p>
-            <div className=" grid md:grid-cols-2 gap-2 bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
+            <div className=" grid md:grid-cols-2 gap-4 bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
               <div className="mb-4">
                 <p className="text-3xl mb-2">Accès</p>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{info?.attributes.transport}</ReactMarkdown>
