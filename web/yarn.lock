@@ -997,6 +997,16 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/montserrat@^4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.12.tgz#465c61fb508f6d0055dbcbfbc6eb7307a81fdf6f"
+  integrity sha512-UQ+4ijm1sddIBtmEZ9bKgCB1rSi4Imog0YKz7wDLtMQ3Mw2ZaBseTgoLDfbWnfdowS0PLp+Z4T2KZ/1AySTlDQ==
+
+"@fontsource/rubik@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/rubik/-/rubik-4.5.11.tgz#e2d06b840ba5c2111b269bea2842f570848af070"
+  integrity sha512-m0/4GKOqJjF9cB4wuLgDhRdRVt35WzqI5n7SgddRjRD+yzsO0eEq/ak0ezgfbR3+f91ydDCek1+RuOVB8dNYwg==
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"

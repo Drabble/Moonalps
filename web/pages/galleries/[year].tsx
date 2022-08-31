@@ -70,7 +70,7 @@ const Galleries: NextPage<IProps> = ({ galleries, general, bands, gallery }: IPr
                   <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
                     {gallery.attributes.video && (
                       <div className="mb-8">
-                        <div className="relative w-full h-96">
+                        <div className="relative w-full" style={{ height: '60vh' }}>
                           <iframe
                             className="absolute top-0 left-0 w-full h-full"
                             src={gallery.attributes.video}

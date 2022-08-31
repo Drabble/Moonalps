@@ -114,6 +114,14 @@ export interface IPartner {
         updatedAt: string
     }
 }
+export interface IDonator {
+    id: number,
+    attributes: {
+        name: string
+        location: string
+        position: number
+    }
+}
 export interface IImage {
     id: number,
     attributes: {

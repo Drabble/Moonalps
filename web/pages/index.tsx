@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { IBand, IGallery, IGeneral, IPartner, ISponsor } from '../types';
+import { IBand, IDonator, IGallery, IGeneral, IPartner, ISponsor } from '../types';
 import Layout from '../components/Layout';
 import Tree from '../assets/Tree.svg';
 import Link from 'next/link';
@@ -25,20 +25,24 @@ export async function getStaticProps() {
   const res2 = await fetch(`${URL}/api/partners?populate=*`);
   const { data: partners } = await res2.json();
 
+  const res3 = await fetch(`${URL}/api/donators?populate=*`);
+  const { data: donators } = await res3.json();
+
   return {
-    props: { general, bands, galleries, sponsors, partners },
+    props: { general, bands, galleries, sponsors, partners, donators },
   };
 }
 
 type IProps = {
   sponsors: ISponsor[];
   partners: IPartner[];
+  donators: IDonator[];
   general: IGeneral;
   bands: IBand[];
   galleries: IGallery[];
 };
 
-const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries }: IProps) => {
+const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries, donators }: IProps) => {
   const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -104,7 +108,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
             />
           </div>
           <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
-            <p className="text-6xl mb-16">SPONSORS</p>
+            <p className="text-6xl mb-16 break-all">SPONSORS</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {sponsors
@@ -142,11 +146,17 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
           <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden">
             <Tree
               className="-mr-24 -mt-48 w-full stroke-dark-200 fill-transparent"
-              style={{ height: '50rem', transform: `translate(${-scroll / 30}px, ${scroll / 30}px)` }}
+              style={{ height: '50rem', transform: `translate(${scroll / 30}px, ${scroll / 30 + 800}px)` }}
             />
           </div>
-          <div className="bg-white text-dark-900 rounded-md py-16 text-center relative">
-            <p className="text-6xl mb-16">PARTENAIRES</p>
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden">
+            <Tree
+              className="-mr-24 -mt-48 w-full stroke-dark-200 fill-transparent"
+              style={{ height: '50rem', transform: `translate(${-scroll / 30 - 120}px, ${scroll / 30}px)` }}
+            />
+          </div>
+          <div className="bg-white text-dark-900 rounded-md py-16 text-center relative mb-16">
+            <p className="text-6xl mb-16 break-all">PARTENAIRES</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {partners
@@ -162,7 +172,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
                   ))}
               </div>
             </div>
-            <p className="text-xl mt-8 mb-4">Avec le support de</p>
+            <p className="text-xl mt-8 mb-4 break-all">Avec le soutien de</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {partners
@@ -177,6 +187,19 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries 
                     </a>
                   ))}
               </div>
+            </div>
+          </div>
+          <div className=" rounded-md py-16 text-center relative text-dark-900">
+            <p className="text-6xl mb-16 break-all">Le Moonalps Festival remercie ses donnateur·rice·s</p>
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+              {donators
+                .sort((a, b) => a.attributes.position - b.attributes.position)
+                .map((donator, i) => (
+                  <div key={i} className="flex flex-col justify-center text-center mb-8 break-all">
+                    <p className="font-bold">{donator.attributes.name}</p>
+                    <p>{donator.attributes.location}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

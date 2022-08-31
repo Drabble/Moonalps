@@ -2,13 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ul, ol {
+    list-style: revert;
+    margin-left: 1.5rem;
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 12px;
+  font-family: "Rubik",Verdana,Geneva,sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.4em;
   overflow-x: hidden;
   @apply bg-menu text-white;
 }

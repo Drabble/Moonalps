@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.12",
+    "@fontsource/rubik": "^4.5.11",
     "html-react-parser": "^1.4.11",
     "moment": "^2.29.3",
     "next": "12.1.5",

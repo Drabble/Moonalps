@@ -37,9 +37,9 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
   return (
     <div>
       <nav
-        className={`fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 rounded`}
+        className={`fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 rounded bg-dark-900`}
         style={{
-          background: `rgba(15, 5, 20, ${Math.min(scroll / 5, 1.0)})`,
+          background: `rgba(6, 26, 33, ${Math.min(scroll / 5, 1.0)})`,
         }}
       >
         <div className="flex flex-wrap justify-between items-center mx-auto">
@@ -77,7 +77,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
             className={`w-full md:block md:w-auto ${!showMenu ? 'hidden' : 'bg-dark-900 rounded p-4'}`}
             style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 5, 0.0)})` : `` }}
           >
-            <ul className="flex flex-col justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-lg">
+            <ul className="list-none ml-0 flex flex-col justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-lg">
               <li>
                 <Link href="/">
                   <a>ACCUEIL</a>
@@ -87,7 +87,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">LINEUP</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
                       {bandYears.map((year) => (
                         <li className="" key={year}>
                           <Link href={`/lineup/${year}`}>
@@ -103,7 +103,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">LE FESTIVAL</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
                       <li>
                         <Link href="/about">
                           <a className="block p-4 w-full">À PROPOS</a>
@@ -134,7 +134,7 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
                 <div className="dropdown relative">
                   <button className="font-medium text-dark-200">GALERIE</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className=" bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
                       {galleryYears.map((year) => (
                         <li className="" key={year}>
                           <Link href={`/galleries/${year}`}>
