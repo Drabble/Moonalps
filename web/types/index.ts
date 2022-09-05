@@ -80,6 +80,9 @@ export interface IInfo {
         accessibility: string
         healthAndSafety: string
         stands: string
+        map: {
+            data: IImage
+        }
     }
 }
 export interface ISponsor {

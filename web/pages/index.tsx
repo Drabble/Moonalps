@@ -172,7 +172,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries,
                   ))}
               </div>
             </div>
-            <p className="text-xl mt-8 mb-4 break-all">Avec le soutien de</p>
+            <p className="text-xl mt-8 mb-4 break-words">Avec le soutien de</p>
             <div className="flex flex-col items-center mb-8">
               <div className="flex justify-center p-4 gap-8 flex-wrap">
                 {partners
@@ -189,8 +189,8 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries,
               </div>
             </div>
           </div>
-          <div className=" rounded-md py-16 text-center relative text-dark-900">
-            <p className="text-6xl mb-16 break-all">Le Moonalps Festival remercie ses donnateur·rice·s</p>
+          <div className="rounded-md py-16 text-center relative text-dark-900">
+            <p className="text-6xl mb-16 break-words">Le Moonalps Festival remercie ses donnateur·rice·s</p>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
               {donators
                 .sort((a, b) => a.attributes.position - b.attributes.position)

@@ -115,6 +115,11 @@ const Layout: React.FC<IProps> = ({ general, bands, galleries, onScroll, childre
                         </Link>
                       </li>
                       <li>
+                        <Link href="/map">
+                          <a className="block p-4 w-full">PLAN DU FESTIVAL</a>
+                        </Link>
+                      </li>
+                      <li>
                         <Link href="/contact">
                           <a className="block p-4 w-full">CONTACT</a>
                         </Link>
