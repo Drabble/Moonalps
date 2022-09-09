@@ -53,6 +53,14 @@
     },
     "enableTickets": {
       "type": "boolean"
+    },
+    "timetable": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

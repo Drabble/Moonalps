@@ -87,12 +87,17 @@ const Home: NextPage<IProps> = ({ sponsors, partners, general, bands, galleries,
             />
           </div>
           <div className="text-center -mt-2 relative">
-            <p className="text-9xl mb-24">
+            <p className="text-9xl mb-24 mt-24">
               Une 3<sup>ème</sup> édition sur 2 jours !
             </p>
-            <div className="flex flex-wrap justify-center gap-1">
+            <div className="flex flex-wrap justify-center gap-1 mb-24">
+              {general.attributes.timetable.data && (
+                <a href={general.attributes.timetable.data?.attributes.url} target="blank" className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">
+                  Horaire
+                </a>
+              )}
               <Link href="/lineup/2022">
-                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Lineup 2022</a>
+                <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert ">Lineup 2022</a>
               </Link>
               <Link href="/tickets">
                 <a className="text-4xl p-8 bg-dark-900 text-dark-100 hover:invert">Billetterie</a>

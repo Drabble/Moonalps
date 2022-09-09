@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { IGeneral, IGallery, IImage, IBand } from '../../types';
+import { IGeneral, IGallery, IFile, IBand } from '../../types';
 import Layout from '../../components/Layout';
 import 'moment/locale/fr';
 import Tree from '../../assets/Tree.svg';

@@ -5,7 +5,7 @@ export interface IPost {
         content: string
         slug: string 
         image: {
-            data: IImage
+            data: IFile
         }
         createdAt: string
         locale: string
@@ -21,7 +21,7 @@ export interface IBand {
         style: string
         video: string 
         image: {
-            data: IImage
+            data: IFile
         }
         createdAt: string
         locale: string
@@ -36,10 +36,10 @@ export interface IGallery {
         year: number
         credits: string
         videos: {
-            data: [IImage]
+            data: [IFile]
         }
         pictures: {
-            data: [IImage]
+            data: [IFile]
         }
         video: string  
         createdAt: string
@@ -67,7 +67,10 @@ export interface IGeneral {
         locale: string
         publishedAt: string
         updatedAt: string,
-        enableTickets: boolean}
+        enableTickets: boolean, 
+        timetable: {
+            data: IFile
+        }}
 }
 export interface IInfo {
     id: number,
@@ -81,7 +84,7 @@ export interface IInfo {
         healthAndSafety: string
         stands: string
         map: {
-            data: IImage
+            data: IFile
         }
     }
 }
@@ -90,7 +93,7 @@ export interface ISponsor {
     attributes: {
         name: string
         logo: {
-            data: IImage
+            data: IFile
         }
         url: string 
         order: number
@@ -106,7 +109,7 @@ export interface IPartner {
     attributes: {
         name: string
         logo: {
-            data: IImage
+            data: IFile
         }
         supporter: boolean
         order: number
@@ -125,7 +128,7 @@ export interface IDonator {
         position: number
     }
 }
-export interface IImage {
+export interface IFile {
     id: number,
     attributes: {
         name: string,
