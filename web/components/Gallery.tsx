@@ -17,13 +17,13 @@ const Images = ({ pictures }: IProps) => {
             <Item
               key={picture.id}
               original={picture.attributes.url}
-              thumbnail={picture.attributes.formats.thumbnail.url}
+              thumbnail={picture.attributes.formats.small.url}
               alt={picture.attributes.caption}
               width={picture.attributes.width}
               height={picture.attributes.height}
             >
               {({ ref, open }) => (
-                <img style={{ cursor: 'pointer' }} src={picture.attributes.url} ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open} />
+                <img style={{ cursor: 'pointer' }} src={picture.attributes.formats.large.url} ref={ref as React.MutableRefObject<HTMLImageElement>} onClick={open} />
               )}
             </Item>
           ))}
