@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 4704.123 4704.123" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #004623;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        stroke: #000;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 100px;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fee7bb;
+      }
+
+      .cls-3 {
+        fill: #ffdd81;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 40px;
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        fill: #e39161;
+      }
+    </style>
+  </defs>
+  <circle id="OUTTER" class="cls-1" cx="2352.061" cy="2352.061" r="2302.061" style="fill: none;"/>
+  <circle id="INNER" class="cls-2" cx="2352.064" cy="2352.064" r="2055.408" style="stroke: rgb(0, 0, 0); stroke-width: 35px;"/>
+  <g id="Food2021">
+    <path id="F9" class="cls-3" d="M2165.88,2630.89L1481.84,1467.82l311.81-133.79L2338.5,2645.99Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F10" class="cls-3" d="M2629.81,2421.58L2173.43,1262.82l-212.55,55.03,590.17,1209.46Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F1" class="cls-3" d="M2049.35,2693.46l-619.29-803.79,137.02-151.05,521.11,842.64Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F2" class="cls-3" d="M2254.35,2597.44L1583.26,1490.47,1385.82,1648l746.61,1042.23Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F5" class="cls-3" d="M2400,2712.89l-608.51-1274.2,284.84-55.03,480.11,1290.38Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F3" class="cls-3" d="M2270.53,2683.75l-596.64-968.86,279.44-126.23,445.59,1091.86Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F7" class="cls-3" d="M2616.86,2460.42L2046.12,1062.15l237.36-83.082L2694.54,2431.29Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F6" class="cls-3" d="M2502.5,2603.91l-407.83-1104.8,169.39-156.45,366.83,1206.23Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F8" class="cls-3" d="M2681.6,2343.9L2289.95,1252.03l234.13-58.26,276.2,1008.79Z" transform="translate(-47.938 -47.938)"/>
+    <path id="Cornet_copy" data-name="Cornet copy" class="cls-4" d="M3063.53,3844.67s-14.69-473.98-72.28-930.03c-53.96-427.17-185.58-944.05-185.58-944.05s-91.02,165.76-187.73,307.49c-99.09,145.22-209.31,282.68-209.31,282.68s-171.84-23.62-340.94-73.37c-146.47-43.09-336.62-127.31-336.62-127.31s328.03,495.18,646.27,846.95C2683.57,3545.51,3063.53,3844.67,3063.53,3844.67Z" transform="translate(-47.938 -47.938)"/>
+    <path id="F4_copy" data-name="F4 copy" class="cls-3" d="M2187.29,2519.99c-306.18-140.96-674.16,89.16-674.16,89.16l-126.23-99.26s579.67-425.59,1052.74,12.1c-11.94,16.65-13.81,17.29-32.64,39.01C2372.74,2556.62,2306.95,2541.85,2187.29,2519.99Z" transform="translate(-47.938 -47.938)"/>
+  </g>
+</svg>
