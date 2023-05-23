@@ -14,13 +14,13 @@ const About: NextPage = () => {
           <meta name="description" content="Toutes les informations utiles sur le Moonalps" />
         </Head>
 
-        <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
+        <main className="pt-20 p-2 text-justify relative">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28 break-words">INFOS PRATIQUES</p>
-            <div className=" grid md:grid-cols-2 gap-4 bg-dark-100 p-8 border-8 border-dark-200 rounded-lg h-full">
+            <div className="grid md:grid-cols-2 gap-4 p-8 h-full">
               <div className="mb-4">
                 <p className="text-3xl mb-2">Accès</p>
                 <h3>

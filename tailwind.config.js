@@ -8,8 +8,8 @@ module.exports = {
       colors: {
         transparent: "transparent",
         primary: "#fee7bb",
-        secondary: "#ecc166",
-        tertiary: "#FF4E00",
+        secondary: "#2B2726",
+        tertiary: "#e86054",
         quaternary: "#3f3cbb",
         menu: "#0a0a0a",
         'dark': {
@@ -19,9 +19,9 @@ module.exports = {
           400: '#22d3ee',
           500: '#06b6d4',
           600: '#0891b2',
-          700: '#0e7490',
-          800: '#05212A',
-          900: '#061A21',
+          700: '#333333',
+          800: '#222222',
+          900: '#111111',
         },
         'light': {
           100: '#cffafe',
@@ -35,6 +35,12 @@ module.exports = {
           900: '#164e63',
         },
       },
+      backgroundImage: {
+        'moonalps': "url('/moonalps.jpg')"
+      },
+      grayscale: {
+        50: '50%',
+      }
     },
   },
   plugins: [],

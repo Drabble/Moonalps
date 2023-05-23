@@ -25,26 +25,31 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
     window.addEventListener('scroll', changeScroll);
   }
 
+
+  useEffect(() => {
+    setScroll(window.scrollY);
+  }, []);
+
   return (
     <div>
       <nav
-        className={`fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 rounded bg-dark-900`}
+        className={`menu fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 rounded`}
         style={{
-          background: `rgba(6, 26, 33, ${Math.min(scroll / 5, 1.0)})`,
+          background: `rgba(43, 39, 38, ${Math.min(scroll / 400, 1.0)})`,
         }}
       >
         <div className="flex flex-wrap justify-between items-center mx-auto">
           <Link href="/">
             <a>
-              <Image src={'/logo.svg'} alt="Accueil" height="40rem" width="40rem" />
+              <Image src={'/logo.svg'} alt="Accueil" height="28rem" width="28rem" />
             </a>
           </Link>
           <button
             onClick={() => setShowMenu(!showMenu)}
-            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 5, 0.0)})` : `` }}
+            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 400, 0.0)})` : `` }}
             data-collapse-toggle="mobile-menu"
             type="button"
-            className="inline-flex items-center p-2 ml-3  rounded-lg md:hidden ocus:outline-none focus:ring-2  text-dark-200 hover:bg-dark-900 focus:ring-dark-800"
+            className="inline-flex items-center p-2 ml-3  rounded-lg md:hidden ocus:outline-none focus:ring-2  text-secondary hover:bg-primary focus:ring-dark-800"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
@@ -65,10 +70,10 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
             </svg>
           </button>
           <div
-            className={`w-full md:block md:w-auto ${!showMenu ? 'hidden' : 'bg-dark-900 rounded p-4'}`}
-            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 5, 0.0)})` : `` }}
+            className={`w-full md:block md:w-auto ${!showMenu ? 'hidden' : 'bg-primary rounded p-4'}`}
+            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 400, 0.0)})` : `` }}
           >
-            <ul className="list-none ml-0 flex flex-col justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-lg">
+            <ul className="list-none ml-0 flex flex-col justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-sm">
               <li>
                 <Link href="/">
                   <a>ACCUEIL</a>
@@ -76,9 +81,9 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
               </li>
               <li>
                 <div className="dropdown relative">
-                  <button className="font-medium text-dark-200">LINEUP</button>
+                  <button className="font-medium">LINEUP</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-secondary mt-2">
                       <li>
                         <Link href={`/lineup/${2022}`}>
                           <a className="block p-4 w-full">2022</a>
@@ -94,10 +99,13 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
                 </div>
               </li>
               <li>
-                <div className="dropdown relative">
-                  <button className="font-medium text-dark-200">LE FESTIVAL</button>
+                <Link href="/about">
+                  <a>À PROPOS</a>
+                </Link>
+                {/*<div className="dropdown relative ">
+                  <button className="font-medium">LE FESTIVAL</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-secondary mt-2">
                       <li>
                         <Link href="/about">
                           <a className="block p-4 w-full">À PROPOS</a>
@@ -115,7 +123,7 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div>*/}
               </li>
               {/*<li>
                 <Link href="/tickets">
@@ -123,10 +131,10 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
                 </Link>
               </li>*/}
               <li>
-                <div className="dropdown relative">
-                  <button className="font-medium text-dark-200">GALERIE</button>
+                <div className="dropdown relative ">
+                  <button className="font-medium">GALERIE</button>
                   <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-dark-900 border-4 border-dark-800 mt-2">
+                    <ul className="list-none ml-0 bg-secondary mt-2">
                       <li>
                         <Link href={`/galleries/2022`}>
                           <a className="block p-4 w-full">2022</a>
@@ -146,7 +154,7 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
                   </div>
                 </div>
               </li>
-              <li className="flex justify-start mt-4 mb-4 items-center gap-2 text-xl">
+              <li className="flex justify-start items-center gap-2 text-md">
                 <a href="https://www.youtube.com/channel/UCAq2Ota_y0mhA2islGq7Yxg" rel="noreferrer" target="_blank">
                   {' '}
                   <FaYoutube />

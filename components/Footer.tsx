@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 
 const Layout: React.FC = () => {
   return (
-    <footer className="flex flex-col justify-center items-center text-white relative  footer">
+    <footer className="flex flex-col justify-center items-center relative footer">
       <div className="relative w-full max-w-full h-96">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10995.779475979833!2d6.2944797!3d46.4497894!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf9a8081e32006c7!2sMoonAlps%20Festival!5e0!3m2!1sen!2sch!4v1658858359793!5m2!1sen!2sch"
@@ -19,10 +19,10 @@ const Layout: React.FC = () => {
           className="absolute top-0 left-0 right-0 bottom-0"
           style={{
             background: `linear-gradient(
-            rgba(0, 0, 0, 0.8), 
-            rgba(0, 0, 0, 0.8)
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
         ),url('/moonalps.jpg')`,
-            filter: `grayscale(100%)`,
+            filter: `grayscale(50%)`,
             backgroundPosition: 'center, center',
             backgroundRepeat: 'repeat',
             backgroundSize: 'cover',
@@ -63,7 +63,7 @@ const Layout: React.FC = () => {
               </a>
             </div>
           </div>
-          <p className="text-sm p-4 my-4">© Moonalps 2022</p>
+          <p className="text-sm p-4 my-4">© Moonalps 2023</p>
         </div>
       </div>
     </footer>

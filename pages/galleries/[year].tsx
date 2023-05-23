@@ -92,7 +92,7 @@ export async function getStaticProps({ params }: any) {
       props: {
         gallery: {
           credits: '',
-          video: '',
+          video: 'https://www.youtube.com/embed/HF1DI37YaHM',
           videos: [],
           pictures: [
             '/galleries/2022/20220909-moonalps-200.jpg',
@@ -159,7 +159,7 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
           <meta name="description" content="Gallerie" />
         </Head>
 
-        <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
+        <main className="pt-20 p-2 text-justify relative">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
@@ -168,7 +168,7 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
             {gallery && (
               <div>
                 <div className="flex flex-col gap-2 justify-center">
-                  <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
+                  <div className="p-8 mb-8">
                     {gallery.video && (
                       <div className="mb-8">
                         <div className="relative w-full" style={{ height: '60vh' }}>

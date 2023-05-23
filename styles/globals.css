@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    ul, ol {
+
+    ul,
+    ol {
         list-style: revert;
         margin-left: 1.5rem;
     }
@@ -18,7 +20,7 @@ body {
     font-size: 1em;
     line-height: 1.4em;
     overflow-x: hidden;
-    @apply bg-menu text-white;
+    @apply bg-primary text-secondary;
 }
 
 strong {
@@ -40,13 +42,33 @@ p {
 }
 
 a {
+    @apply text-secondary;
+}
+
+.menu a {
     @apply text-primary;
+}
+
+.menu button {
+    @apply text-primary;
+}
+
+.footer {
+    @apply text-white;
+}
+
+.footer a {
+    @apply text-white;
+}
+
+.footer button {
+    @apply text-white;
 }
 
 a:hover,
 a:focus,
 a:active {
-    @apply text-secondary;
+    @apply text-tertiary;
     text-decoration: none;
 }
 
@@ -59,19 +81,23 @@ a:active {
 }
 
 .my-masonry-grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: -webkit-box;
+    /* Not needed if autoprefixing */
+    display: -ms-flexbox;
+    /* Not needed if autoprefixing */
     display: flex;
     width: auto;
 }
 
 .my-masonry-grid_column {
-    padding: 1px; /* gutter size */
+    padding: 1px;
+    /* gutter size */
     background-clip: padding-box;
 }
 
 /* Style your items */
-.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+.my-masonry-grid_column>div {
+    /* change div to reference your elements you put in <Masonry> */
     background: grey;
     margin-bottom: 30px;
 }

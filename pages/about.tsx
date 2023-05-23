@@ -14,13 +14,13 @@ const About: NextPage = () => {
           <meta name="description" content="À propos du Moonalps" />
         </Head>
 
-        <main className="bg-dark-100 text-dark-900 pt-20 p-2 text-justify relative">
+        <main className="pt-20 p-2 text-justify relative">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
             <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
           </div>
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28">LE FESTIVAL</p>
-            <div className="bg-dark-100 p-8 border-8 border-dark-200 rounded-lg mb-8">
+            <div className="p-8 mb-8">
               <h1>Le MoonAlps, c’est quoi ?</h1>
               <p>
                 La pandémie de COVID-19 ayant mis un frein à la musique live en 2020, un groupe d’ami·e·s a souhaité voir redémarrer la scène musicale locale et
