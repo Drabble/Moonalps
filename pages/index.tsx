@@ -4,208 +4,60 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { IDonator, IPartner, ISponsor } from '../types';
 import Layout from '../components/Layout';
-import Tree from '../assets/Tree.svg';
-import Link from 'next/link';
+
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
 export async function getStaticProps() {
   const sponsors: ISponsor[] = [
     {
-      name: 'Blackbird',
-      logo: '/sponsors/1_blackbird.webp',
-      url: 'https://www.blackbirdhouse.ch/',
-      principal: false,
-    },
-    {
-      name: 'Easycycle',
-      logo: '/sponsors/3_easycycle.webp',
-      url: 'https://www.easycycle.ch/',
-      principal: false,
-    },
-    {
-      name: 'Hauswirth',
-      logo: '/sponsors/4_hauswirth.webp',
-      url: 'http://www.hauswirthsa.ch/',
-      principal: false,
-    },
-    {
-      name: 'Blackbird',
-      logo: '/sponsors/5_dorin.webp',
-      url: 'https://www.garagedorin.ch/',
-      principal: false,
-    },
-    {
-      name: 'Isofloc',
-      logo: '/sponsors/6_isofloc.webp',
-      url: 'https://www.pikbois.ch/',
-      principal: false,
-    },
-    {
-      name: 'Richa',
-      logo: '/sponsors/7_richa.png',
-      url: 'https://www.richa.ch/',
-      principal: false,
-    },
-    {
       name: 'La Mobilière',
-      logo: '/sponsors/8_mobiliere.jpg',
+      logo: '/sponsors/La mobilière.png',
       url: 'https://www.mobiliere.ch/',
       principal: false,
     },
     {
-      name: 'Auberge de Luins',
-      logo: '/sponsors/9_luins.png',
-      url: 'https://www.aubergedeluins.ch/',
+      name: 'BCV',
+      logo: '/sponsors/BCV.png',
+      url: 'https://www.bcv.ch/',
       principal: false,
     },
     {
-      name: 'BCV',
-      logo: '/sponsors/10_bcv.webp',
-      url: 'https://www.bcv.ch/',
+      name: 'Harley-Davidson',
+      logo: '/sponsors/Harley-Davidson.jpg',
+      url: 'https://www.harley-davidson.com/ch',
+      principal: false,
+    },
+    {
+      name: 'Richa & Partners',
+      logo: '/sponsors/Richa & Partners.svg',
+      url: 'https://www.richa.ch/',
+      principal: false,
+    },
+    {
+      name: 'Oeno-Pôle',
+      logo: '/sponsors/Oeno-Pôle.jpg',
+      url: 'https://www.oeno-pole.ch/',
+      principal: false,
+    },
+    {
+      name: 'Hauswirth',
+      logo: '/sponsors/Hauswirth.jpg',
+      url: 'http://www.hauswirthsa.ch/',
+      principal: false,
+    },
+    {
+      name: 'Capriati SA',
+      logo: '/sponsors/Capriati.webp',
+      url: 'https://capriati.ch/',
       principal: false,
     },
   ];
 
   const partners: IPartner[] = [
-    {
-      name: 'FMR',
-      logo: '/partners/1_fmr.webp',
-      url: 'http://fmrbrewing.com/',
-      supporter: false,
-    },
-    {
-      name: 'Montagnon',
-      logo: '/partners/2_montagnon.png',
-      url: 'https://www.lomontagnon.ch/',
-      supporter: false,
-    },
-    {
-      name: 'Manouchy',
-      logo: '/partners/3_manouchy.png',
-      url: 'https://manouchy.ch/',
-      supporter: false,
-    },
-    {
-      name: 'Wynatypic',
-      logo: '/partners/4_wynatypic.jpg',
-      url: 'https://www.winatypic.com/',
-      supporter: false,
-    },
-    {
-      name: 'ABC',
-      logo: '/partners/5_abc.png',
-      url: 'http://www.abctaxis.ch/',
-      supporter: false,
-    },
-    {
-      name: 'Commune de Bursins',
-      logo: '/partners/6_bursins.png',
-      url: 'https://www.bursins.ch/',
-      supporter: true,
-    },
   ];
 
   const donators: IDonator[] = [
-    {
-      name: 'Feel Zen',
-      location: 'Bursins',
-    },
-
-    {
-      name: 'Oeno-Pôle Sàrl',
-      location: 'Bursins',
-    },
-
-    {
-      name: 'Club de pétanque Phénix',
-      location: 'Burisins',
-    },
-
-    {
-      name: 'Boulangerie CH. Fayet',
-      location: 'Bursins',
-    },
-
-    {
-      name: 'Pizzeria Bella Vita',
-      location: 'Gland',
-    },
-
-    {
-      name: 'Capriati SA',
-      location: 'Rolle',
-    },
-
-    {
-      name: 'Birchler Récupération Sàrl',
-      location: 'Etoy',
-    },
-
-    {
-      name: 'Favez Energie Sàrl',
-      location: 'Mont-sur-Rolle',
-    },
-
-    {
-      name: 'TOTEM Escalade',
-      location: 'Meyrin Versoix Gland Ecublens Vevey',
-    },
-
-    {
-      name: 'Hans Nobs & Cie AG',
-      location: 'Münchenbuchsee',
-    },
-
-    {
-      name: 'Infomaniak Events',
-      location: '',
-    },
-
-    { name: 'FC BRP', location: '' },
-
-    {
-      name: 'Gabriela Cantero Oriol',
-      location: '',
-    },
-
-    {
-      name: 'Melisa Oriol',
-      location: '',
-    },
-
-    {
-      name: 'David Oriol',
-      location: '',
-    },
-
-    {
-      name: 'Joëlle Carriot',
-      location: '',
-    },
-
-    {
-      name: 'Margrith Dumuid-Galliker',
-      location: '',
-    },
-
-    {
-      name: 'Alexandre Dumuid',
-      location: '',
-    },
-
-    {
-      name: 'Timothée Spörli',
-      location: '',
-    },
-
-    {
-      name: 'Michela Terribilini',
-      location: '',
-    },
-
-    {
-      name: 'Loïc Stefano Cattin',
-      location: '',
-    },
   ];
 
   return {
@@ -229,6 +81,9 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
     });
   }, []);
 
+  const [open, setOpen] = React.useState(false);
+  const [index, setIndex] = React.useState(0);
+
   return (
     <Layout onScroll={(value) => setScroll(value)} inverse>
       <div>
@@ -237,112 +92,122 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
           <meta name="description" content="Moonalps Festival" />
         </Head>
 
-        <div className="min-h-screen w-full flex flex-col justify-center items-center pb-16 relative">
-          {/*<div className="absolute top-0 bottom-0 right-0 left-0 bg-moonalps bg-center bg-cover grayscale-50 brightness-75 saturate-200 backdrop-blur-lg"></div>
-          <div className="absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-b from-transparent from-80% via-transparent via-80% to-dark-900 to-90%"></div>*/}
-          {//<a href="https://www.freepik.com/free-vector/vintage-trees-forest-silhouettes-set_7997410.htm#query=tree&position=1&from_view=search&track=sph">Image by dgim-studio</a> on Freepik
-          }
-          <div className="absolute m-auto"><Image src="/trees.png" alt="Trees" width={800} height={600} title="Image by dgim-studio" /></div>
-          <Image src="/cover_full.svg" alt="Logo" width={800} height={400} />
+        {/* LANDING */}
+        <div className="min-h-screen w-full flex flex-col justify-center items-center relative bg-home bg-cover bg-center">
+          <div className="text-center text-white">
+            <p><img src="/moonalps.png" alt="Logo" className="w-42" /></p>
+            <p className="leading-6 text-lg">12 août 2023</p>
+            <p className="text-lg "><a href="https://goo.gl/maps/iHe1DSP6HfPQPojV6">Terrasse des tilleuls, Rolle</a></p>
+            <div className="mt-8"><a className=" px-6 py-4 bg-white shadow-md text-black text-md mt-2 hover:text-red-600 hover:shadow-lg hover:bg-gray-100" href="#lineup">LINE-UP 2023</a></div>
+          </div>
         </div>
 
-        <div className="p-4 m-auto text-justify" style={{ maxWidth: "58rem" }}>
-
-          <div className="mb-16">
-            {/*<p className="md:text-9xl text-8xl font-bold mb-20 mt-24 text-center">
-              4<sup>ème</sup> édition
-        </p>*/}
-            <div className="mb-16">
-              <p className="md:text-7xl text-4xl font-bold  mt-16 mb-8 text-center">
-                After movie 2022 🔥
-              </p>
-              <iframe
-                className="w-full h-96"
-                src="https://www.youtube.com/embed/HF1DI37YaHM"
-                title="Video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+        {/* CARROUSEL */}
+        <div className="pb-16 pt-16 bg-white text-center p-8">
+          <div className="m-auto" style={{ maxWidth: "52rem" }}>
+            <p className="text-4xl mb-8 font-migra-light">Vivez le renouveau de la scène musicale rock.
+              Rejoignez-nous pour la <i>Soirée MoonAlps</i>, née de l'enthousiasme du public, des artistes et du staff,
+              pour une expérience inoubliable sur la Côte vaudoise.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-2 w-full">
+              <img src={`/photos/Scene_1.png`} className="cursor-pointer"
+                onClick={() => {
+                  setOpen(true);
+                  setIndex(0);
+                }} />
+              <img src={`/photos/Scene_2.png`} className="cursor-pointer"
+                onClick={() => {
+                  setOpen(true);
+                  setIndex(1);
+                }} />
+              <img src={`/photos/Scene_3.png`} className="cursor-pointer"
+                onClick={() => {
+                  setOpen(true);
+                  setIndex(2);
+                }} />
             </div>
-            <p className="md:text-7xl text-4xl font-bold  mt-16 mb-8 text-center">
-              Take the MoonStage!
-            </p>
-            <p>
-              L&apos;un des buts de notre festival est la promotion des groupes et musicien·e·s de Suisse romande. On revient donc avec Take the MoonStage pour te donner l&apos;occasion d&apos;ouvrir une belle soirée de concerts !<br /><br />
-
-              Alors, ça te parle ? Tu fais de la musique ? Tu as un groupe ou tu connais un jeune groupe dans ta région ? N&apos;hésite plus !<br /><br />
-
-              Voici les critères :
-            </p>
-
-            <ul>
-              <li>Âge des musicien·e·s : 16-22 ans (pour la moitié des membres au moins)</li>
-              <li>Genre : plusieurs styles possibles, mais avec influence rock</li>
-              <li>Provenance : Suisse romande</li>
-            </ul><br />
-            <p>
-              Ce qu&apos;il faut nous envoyer :</p>
-
-            <ul><li> Une brève biographie</li>
-              <li>Nombre de concerts déjà faits</li>
-              <li>Bande son / démo / lien Spotify (de préférence des compositions)</li>
-              <li>Photo du groupe</li>
-            </ul><br />
-
-            <p> Ce que le groupe sélectionné gagne :</p>
-
-            <ul>
-              <li>Un set de 30 minutes en ouverture du festival</li>
-              <li>De la visibilité</li>
-              <li>Des photos professionnelles</li>
-              <li>Des rencontres</li>
-            </ul><br />
-            <p>
-              Envoie ta candidature à : <a itemProp="email" href={`mailto:booking@moonalps.ch`}>
-                booking@moonalps.ch
-              </a><br /><br />
-              Délai pour postuler : 11 juin<br /><br />
-
-              Alors n&apos;hésite pas et tente ta chance !
-            </p>
           </div>
-          {/* <div className="flex flex-wrap justify-center gap-1 mb-24">
-              <a href="horaires_2022.pdf" target="blank" className="text-4xl p-8 hover:invert">
-                Horaire
-              </a>
-              <Link href="/lineup/2022">
-                <a className="text-4xl p-8 hover:invert ">Lineup 2022</a>
-              </Link>
-              <Link href="/tickets">
-                <a className="text-4xl p-8 hover:invert">Billetterie</a>
-              </Link>
+          <Lightbox open={open} index={index} close={() => setOpen(false)} slides={[{ src: `/photos/Scene_1.png` }, { src: `/photos/Scene_2.png` }, { src: `/photos/Scene_3.png` }]} />
+        </div>
+
+        {/* INFOS */}
+        <div className="bg-white text-center grid sm:grid-cols-2 gap-0 bg-black">
+          <div className="bg-[url('/photos/Scene_4.png')] bg-center bg-cover"></div>
+          <div className="p-4 bg-black text-white pt-16 pb-16">
+            <p className="font-migra-bold font-bold text-2xl">Où ?</p>
+            <p className="font-migra-light leading-5 text-lg">Terrasse des Tilleuls<br />
+              Port Arthur Vittel<br />
+              1180 Rolle</p>
+            <p className="font-migra-light leading-5 text-md mt-2"><a href="https://terrassedestilleuls.ch" className="hover:text-red-400">www.terrassedestilleuls.ch</a></p>
+            <p className="font-migra-bold font-bold text-2xl mt-8">Quand ?</p>
+            <p className="font-migra-light leading-5 text-lg">Samedi 12 août 2023<br />
+              Horaires:<br />
+              À partir de 16h<br />
+              Jusqu'à la fermeture</p>
+            <p className="font-migra-bold font-bold text-2xl mt-8">Accessibilité</p>
+            <p className="font-migra-light leading-5 text-lg"><i>Entrée gratuite</i></p>
+            <p className="font-migra-light leading-5 text-lg">Parking Prom. John-Berney 2, 6 min. à pied<br />
+              Gare de Rolle, 15 min. à pied</p>
+            <p className="font-migra-light mt-8 text-md">Entrée accessible en fauteuil roulant</p>
+          </div>
+        </div>
+
+
+        {/* LINEUP */}
+        <div className="pb-16 pt-16 bg-white text-center p-8" id="lineup">
+          <div className="m-auto" style={{ maxWidth: "52rem" }}>
+            <p className="text-8xl mb-8 font-migra-bold font-bold">Line-up 2023</p>
+            <div className="pb-32 pt-32 text-xl">
+              <p><i>À décrouvrir bientot...</i></p>
             </div>
-          <div className="mb-16">
-            <p className="font-bold text-6xl mb-8 break-all ">Sponsors</p>
+          </div>
+        </div>
+
+
+        {/* AFTERMOVIE */}
+        <div className="pb-16 pt-16 bg-black text-white text-center p-8">
+          <div className="m-auto" style={{ maxWidth: "52rem" }}>
+            <p className="text-2xl mb-4 font-migra-bold font-bold">MoonAlps Festival 2022 - AfterMovie
+            </p>
+            <iframe
+              className="w-full h-96"
+              src="https://www.youtube.com/embed/HF1DI37YaHM"
+              title="Video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        {/* SPONSORS */}
+        <div className="pb-16 pt-16 bg-white text-center p-8">
+          <div className="m-auto" style={{ maxWidth: "52rem" }}>
+            <p className="text-4xl mb-8 font-migra-light">Merci aux sponsors 2023 !</p>
             {sponsors.filter((sponsor) => sponsor.principal).length > 0 &&
               <div className="flex justify-stretch gap-8 flex-wrap w-full">
                 {sponsors
                   .filter((sponsor) => sponsor.principal)
                   .map((sponsor, i) => (
-                    <a key={i} href={sponsor.url} rel="noreferrer" target="_blank" className="flex justify-center items-center grayscale hover:grayscale-0 bg-white p-2">
+                    <a key={i} href={sponsor.url} rel="noreferrer" target="_blank" className="flex justify-center items-center">
                       <img src={sponsor.logo} alt={sponsor.name} />
                     </a>
                   ))}
               </div>
             }
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 w-full">
+            <div className="flex flex-wrap justify-center sm:grid-cols-3 gap-12 w-full">
               {sponsors
                 .filter((sponsor) => !sponsor.principal)
                 .map((sponsor, i) => (
-                  <a key={i} href={sponsor.url} rel="noreferrer" target="_blank" className="flex justify-center items-center grayscale hover:grayscale-0 bg-white p-2">
+                  <a key={i} href={sponsor.url} rel="noreferrer" target="_blank" className="flex justify-center items-center w-48">
                     <img src={`${sponsor.logo}`} alt={sponsor.name} />
                   </a>
                 ))}
             </div>
           </div>
+        </div>
 
-          <div className="mb-16">
+        {/* PARTNERS */}
+        {/*<div className="mb-16">
             <p className="font-bold text-6xl mb-8 break-all">Partenaires</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 w-full">
               {partners
@@ -356,9 +221,10 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
                   </a>
                 ))}
             </div>
-          </div>
+          </div>*/}
 
-          <div className="mb-16 relative">
+        {/* SUPPORTERS */}
+        {/*<div className="mb-16 relative">
             <p className="font-bold text-4xl mb-8 break-all">Avec le soutien de</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 w-full">
               {partners
@@ -369,11 +235,10 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
                   </a>
                 ))}
             </div>
-                </div>*/}
+          </div>*/}
 
-
-
-          <div className="mb-16 relative">
+        {/* DONATORS */}
+        {/*<div className="mb-16 relative">
             <p className="md:text-5xl text-4xl font-bold mb-8 break-all text-center">Merci aux donnateur·rice·s</p>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
               {donators.map((donator, i) => (
@@ -383,8 +248,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </div>*/}
       </div >
     </Layout >
   );

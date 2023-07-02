@@ -7,10 +7,10 @@ module.exports = {
     extend: {
       colors: {
         transparent: "transparent",
-        primary: "#fee7bb",
-        secondary: "#2B2726",
-        tertiary: "#e86054",
-        quaternary: "#3f3cbb",
+        primary: "#ffffff",
+        secondary: "#000000",
+        tertiary: "#222222",
+        quaternary: "#eeeeee",
         menu: "#0a0a0a",
         'dark': {
           100: '#FEF6E4',
@@ -36,10 +36,18 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'moonalps': "url('/moonalps.jpg')"
+        'home': "url('/home.jpg')",
+        'footer': "url('/footer.jpg')"
       },
       grayscale: {
         50: '50%',
+      },
+      fontFamily: {
+        'sans': ['TT Hoves', 'ui-sans-serif', 'system-ui'],
+        'serif': ['ui-serif', 'Georgia'],
+        'mono': ['ui-monospace', 'SFMono-Regular'],
+        'migra-bold': ['Migra Bold'],
+        'migra-light': ['Migra Light'],
       }
     },
   },

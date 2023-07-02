@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { IGallery } from '../../types';
 import Layout from '../../components/Layout';
 import 'moment/locale/fr';
-import Tree from '../../assets/Tree.svg';
 import { useRouter } from 'next/router';
 
 import Lightbox from 'yet-another-react-lightbox';
@@ -152,7 +151,7 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
   const [index, setIndex] = React.useState(0);
 
   return (
-    <Layout onScroll={(value) => setScroll(value)} inverse>
+    <Layout onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
           <title>Gallerie {year}</title>
@@ -160,11 +159,8 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
         </Head>
 
         <main className="pt-20 p-2 text-justify relative">
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex overflow-hidden justify-center items-center">
-            <Tree className="w-full stroke-dark-200 fill-transparent" style={{ transform: `translate(${scroll / 10}px, ${scroll / 10}px)` }} />
-          </div>
           <div className="container m-auto relative mb-16">
-            <p className="text-center text-8xl mt-28 mb-28">GALERIE {year}</p>
+            <p className="text-center text-8xl mt-28 mb-28 font-migra-bold break-all">GALERIE {year}</p>
             {gallery && (
               <div>
                 <div className="flex flex-col gap-2 justify-center">

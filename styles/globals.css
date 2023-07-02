@@ -9,18 +9,36 @@
         list-style: revert;
         margin-left: 1.5rem;
     }
+
+    @font-face {
+        font-family: Migra Bold;
+        font-weight: 400;
+        src: url("/fonts/Migra/Migra-Extrabold.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: Migra Light;
+        font-weight: 400;
+        src: url("/fonts/Migra/Migra-Extralight.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: TT Hoves;
+        font-weight: 500;
+        src: url("/fonts/TT-Hoves/TT Hoves Pro Trial Regular.ttf") format("truetype");
+    }
+
 }
 
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: "Rubik", Verdana, Geneva, sans-serif;
+    font-family: "TT Hoves" "Rubik", Verdana, Geneva, sans-serif;
     font-weight: 400;
     font-size: 1em;
     line-height: 1.4em;
     overflow-x: hidden;
-    @apply bg-primary text-secondary;
 }
 
 strong {
@@ -39,30 +57,6 @@ h2 {
 
 p {
     line-height: 1.8em;
-}
-
-a {
-    @apply text-secondary;
-}
-
-.menu a {
-    @apply text-primary;
-}
-
-.menu button {
-    @apply text-primary;
-}
-
-.footer {
-    @apply text-white;
-}
-
-.footer a {
-    @apply text-white;
-}
-
-.footer button {
-    @apply text-white;
 }
 
 a:hover,

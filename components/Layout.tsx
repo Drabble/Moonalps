@@ -9,10 +9,10 @@ type IProps = {
   onScroll?: (_: number) => void;
   // eslint-disable-next-line no-undef
   children: JSX.Element;
-  inverse: boolean;
+  inverse?: boolean;
 };
 
-const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
+const Layout: React.FC<IProps> = ({ onScroll, children, inverse = false }) => {
   const [scroll, setScroll] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -33,9 +33,9 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
   return (
     <div>
       <nav
-        className={`menu fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 rounded`}
+        className={`menu fixed top-0 w-full z-50 px-2 md:px-4 py-2.5 bg-gray-50`}
         style={{
-          background: `rgba(43, 39, 38, ${Math.min(scroll / 400, 1.0)})`,
+          background: `rgba(240, 240, 240, ${showMenu ? 1.0 : Math.min(scroll / 400, 1.0)})`,
         }}
       >
         <div className="flex flex-wrap justify-between items-center mx-auto">
@@ -46,10 +46,9 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
           </Link>
           <button
             onClick={() => setShowMenu(!showMenu)}
-            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 400, 0.0)})` : `` }}
             data-collapse-toggle="mobile-menu"
             type="button"
-            className="inline-flex items-center p-2 ml-3  rounded-lg md:hidden ocus:outline-none focus:ring-2  text-secondary hover:bg-primary focus:ring-dark-800"
+            className="inline-flex items-center p-2 ml-3  rounded-lg md:hidden ocus:outline-none focus:ring-2 hover:bg-primary focus:ring-dark-800"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
@@ -70,20 +69,25 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
             </svg>
           </button>
           <div
-            className={`w-full md:block md:w-auto ${!showMenu ? 'hidden' : 'bg-primary rounded p-4'}`}
-            style={{ filter: inverse ? `invert(${Math.max(1 - scroll / 400, 0.0)})` : `` }}
+            className={`w-full md:block md:w-auto font-migra-bold ${!showMenu ? 'hidden' : 'rounded p-4'}`}
+            style={{ filter: inverse && !showMenu ? `invert(${Math.max(1 - scroll / 400, 0.0)})` : `` }}
           >
-            <ul className="list-none ml-0 flex flex-col justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-sm">
+            <ul className="list-none ml-0 flex flex-col gap-2 justify-center items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:font-medium text-left text-sm" >
               <li>
                 <Link href="/">
-                  <a>ACCUEIL</a>
+                  <a className=" w-16">ACCUEIL</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about">
+                  <a className="w-16">LE FESTIVAL</a>
                 </Link>
               </li>
               <li>
                 <div className="dropdown relative">
-                  <button className="font-medium">LINEUP</button>
-                  <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-secondary mt-2">
+                  <button className="font-bold w-16">LINEUP</button>
+                  <div className={`z-50 dropdown-menu absolute hidden ${showMenu ? 'pt-2' : 'pt-4'}`}>
+                    <ul className="list-none ml-0 bg-gray-100">
                       <li>
                         <Link href={`/lineup/${2022}`}>
                           <a className="block p-4 w-full">2022</a>
@@ -99,42 +103,10 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse }) => {
                 </div>
               </li>
               <li>
-                <Link href="/about">
-                  <a>À PROPOS</a>
-                </Link>
-                {/*<div className="dropdown relative ">
-                  <button className="font-medium">LE FESTIVAL</button>
-                  <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-secondary mt-2">
-                      <li>
-                        <Link href="/about">
-                          <a className="block p-4 w-full">À PROPOS</a>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/info">
-                          <a className="block p-4 w-full">INFOS PRATIQUES</a>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/map">
-                          <a className="block p-4 w-full">PLAN DU FESTIVAL</a>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>*/}
-              </li>
-              {/*<li>
-                <Link href="/tickets">
-                  <a>BILLETTERIE</a>
-                </Link>
-              </li>*/}
-              <li>
-                <div className="dropdown relative ">
-                  <button className="font-medium">GALERIE</button>
-                  <div className="z-50 dropdown-menu absolute hidden">
-                    <ul className="list-none ml-0 bg-secondary mt-2">
+                <div className="dropdown relative">
+                  <button className=" w-16">GALERIE</button>
+                  <div className={`z-50 dropdown-menu absolute hidden ${showMenu ? 'pt-2' : 'pt-4'}`}>
+                    <ul className="list-none ml-0 bg-gray-100">
                       <li>
                         <Link href={`/galleries/2022`}>
                           <a className="block p-4 w-full">2022</a>
