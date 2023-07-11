@@ -187,7 +187,7 @@ export async function getStaticProps({ params }: any) {
       url: '',
       style: 'Neo-grunge',
       location: 'Vaud',
-      video: 'https://www.youtube.com/embed/8707c6IRsiM',
+      video: '',
       image: '/bands/2023/2_nuum.png',
       year: 2023,
     },
