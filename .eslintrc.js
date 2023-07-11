@@ -23,6 +23,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/display-name': 'off',
     "react/no-unescaped-entities": 'off',
+    'no-irregular-whitespace': "warn",
     'no-var': 2,
     'no-undef': 2,
     'no-param-reassign': 2,
