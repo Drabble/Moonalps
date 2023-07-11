@@ -239,7 +239,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators, bands }: IProps)
                   <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-64 mb-8 w-full" ></div>
                   <p className="text-xl font-migra-bold leading-6">{band.name}</p>
                   <p className="text-sm mb-4 font-bold">{band.location} · {band.style}</p>
-                  <p className="text-xs font-light whitespace-pre-line">{band.description}</p>
+                  <p className="text-xs font-light whitespace-pre-line mb-4">{band.description}</p>
                   <div className="flex-grow"></div>
                   {
                     band.video && (
