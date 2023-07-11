@@ -161,6 +161,67 @@ export async function getStaticProps({ params }: any) {
       image: '/bands/2022/9_le_dojo.jpg',
       year: 2022,
     },
+    {
+      name: 'Don\'t Kill The Cow',
+      description:
+        `Don't Kill The Cow est un groupe d'indie rock originaire de la région du Grand Genève, ayant déjà réalisé plus de 80 concerts sur la scène genevoise et lausannoise.
+        
+        Après la sortie de leur EP en mars 2020, le groupe franchit une nouvelle étape avec leur premier album intitulé "Drawing Cards", qui voit le jour en mai 2022.
+        
+        Leur complicité sur scène, forgée par plus de quinze ans d'amitié, se transmet au public à travers des compositions variées et originales, remplies d'émotions profondes et d'énergie débordante.`,
+      url: '',
+      style: 'Indie Rock',
+      location: 'Genève',
+      video: 'https://www.youtube.com/embed/HlG-E8jPrYE',
+      image: '/bands/2023/1_dont_kill_the_cow.png',
+      year: 2023,
+    },
+    {
+      name: 'nuum.',
+      description:
+        `nuum. est un groupe qui fusionne habilement le grunge et la pop pour créer un son captivant, hypnotique et énergique.
+
+        Initialement formé sous le nom de Sinai Planum en 2018, le groupe a sorti  leur premier single "Burn the Hideaway" en 2019 et leur EP "Sauvage Café" début 2021.
+        
+        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, et Loïc Cattin à la batterie.`,
+      url: '',
+      style: 'Neo-grunge',
+      location: 'Vaud',
+      video: 'https://www.youtube.com/embed/8707c6IRsiM',
+      image: '/bands/2023/2_nuum.png',
+      year: 2023,
+    },
+    {
+      name: 'The Meseeks',
+      description:
+        `The Meseeks est un trio punk rock de Brig formé en 2018, qui a sorti son premier EP "RENEGADE" un an plus tard.
+
+        Après de nombreux concerts énergiques et passionnés, le groupe a commencé à écrire de nouvelles chansons et a développé son propre son, quelque part entre l'indie, l'emo et le post-punk.
+
+        Leur nouvel EP "HEAVY DREAMS / PLASMONIC VIBES" explore la réflexion autocritique de la routine quotidienne et les rêves euphoriques.
+        `,
+      url: '',
+      style: 'Punk Rock',
+      location: 'Valais',
+      video: 'https://www.youtube.com/embed/9ToEvKHn3q4',
+      image: '/bands/2023/3_the_meseeks.png',
+      year: 2023,
+    },
+    {
+      name: 'Fluffy Machine',
+      description:
+        `Fluffy Machine s'est fait un nom dans la scène punk rock européenne au cours des 5 dernières années, s'inspirant de groupes tels que IDLES et Clowns.
+
+        En 2019, ils ont enregistré leur premier album "Mutual Admiration Society" qui explore le skate punk à la manière californienne.
+        
+        Avec leur dernier album "Alive But Not Dead"  sorti en 2021 et le single "i'm always high when i see you smile" sorti en 2022, ils nous offrent une ambiance estivale revigorante, raffraichissante et dynamique.`,
+      url: '',
+      style: 'Punk Rock',
+      location: 'Valais',
+      video: 'https://www.youtube.com/embed/IlVeeiTKuMU',
+      image: '/bands/2023/4_fluffy_machine.png',
+      year: 2023,
+    },
   ].filter((e) => e.year == params.year);
   return {
     props: { bands },
@@ -169,7 +230,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { year: '2021' } }, { params: { year: '2022' } }],
+    paths: [{ params: { year: '2021' } }, { params: { year: '2022' } }, { params: { year: '2023' } }],
     fallback: false, // false or 'blocking'
   };
 }
@@ -193,18 +254,18 @@ const Lineup: NextPage<IProps> = ({ bands }: IProps) => {
         <main className="pt-20 p-2 relative">
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28 font-migra-bold break-all">LINE-UP {year}</p>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mt-4">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mt-4 px-4">
               {bands.map((band: IBand, i: number) => (
                 <div key={i} className="h-full flex flex-col">
-                  <div className="bg-center bg-cover grayscale h-80 mb-8 w-full" style={{ backgroundImage: `url(${band.image})` }}></div>
+                  <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-80 mb-8 w-full" ></div>
                   <p className="text-xl font-migra-bold leading-6">{band.name}</p>
                   <p className="text-sm mb-4 font-bold">{band.location} · {band.style}</p>
-                  <p className="text-xs font-light">{band.description}</p>
+                  <p className="text-xs font-light whitespace-pre-line">{band.description}</p>
                   <div className="flex-grow"></div>
                   {
                     band.video && (
                       <div className="mt-4">
-                        <div className="relative w-full h-32">
+                        <div className="relative w-full h-32 grayscale">
                           <iframe
                             className="absolute top-0 left-0 w-full h-full"
                             src={band.video}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { IDonator, IPartner, ISponsor } from '../types';
+import { IDonator, IPartner, ISponsor, IBand } from '../types';
 import Layout from '../components/Layout';
 
 import Lightbox from 'yet-another-react-lightbox';
@@ -72,8 +72,72 @@ export async function getStaticProps() {
   const donators: IDonator[] = [
   ];
 
+  const bands: IBand[] = [
+    {
+      name: 'Don\'t Kill The Cow',
+      description:
+        `Don't Kill The Cow est un groupe d'indie rock originaire de la région du Grand Genève, ayant déjà réalisé plus de 80 concerts sur la scène genevoise et lausannoise.
+        
+        Après la sortie de leur EP en mars 2020, le groupe franchit une nouvelle étape avec leur premier album intitulé "Drawing Cards", qui voit le jour en mai 2022.
+        
+        Leur complicité sur scène, forgée par plus de quinze ans d'amitié, se transmet au public à travers des compositions variées et originales, remplies d'émotions profondes et d'énergie débordante.`,
+      url: '',
+      style: 'Indie Rock',
+      location: 'Genève',
+      video: 'https://www.youtube.com/embed/HlG-E8jPrYE',
+      image: '/bands/2023/1_dont_kill_the_cow.png',
+      year: 2023,
+    },
+    {
+      name: 'nuum.',
+      description:
+        `nuum. est un groupe qui fusionne habilement le grunge et la pop pour créer un son captivant, hypnotique et énergique.
+
+        Initialement formé sous le nom de Sinai Planum en 2018, le groupe a sorti  leur premier single "Burn the Hideaway" en 2019 et leur EP "Sauvage Café" début 2021.
+        
+        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, et Loïc Cattin à la batterie.`,
+      url: '',
+      style: 'Neo-grunge',
+      location: 'Vaud',
+      video: 'https://www.youtube.com/embed/8707c6IRsiM',
+      image: '/bands/2023/2_nuum.png',
+      year: 2023,
+    },
+    {
+      name: 'The Meseeks',
+      description:
+        `The Meseeks est un trio punk rock de Brig formé en 2018, qui a sorti son premier EP "RENEGADE" un an plus tard.
+
+        Après de nombreux concerts énergiques et passionnés, le groupe a commencé à écrire de nouvelles chansons et a développé son propre son, quelque part entre l'indie, l'emo et le post-punk.
+
+        Leur nouvel EP "HEAVY DREAMS / PLASMONIC VIBES" explore la réflexion autocritique de la routine quotidienne et les rêves euphoriques.
+        `,
+      url: '',
+      style: 'Punk Rock',
+      location: 'Valais',
+      video: 'https://www.youtube.com/embed/9ToEvKHn3q4',
+      image: '/bands/2023/3_the_meseeks.png',
+      year: 2023,
+    },
+    {
+      name: 'Fluffy Machine',
+      description:
+        `Fluffy Machine s'est fait un nom dans la scène punk rock européenne au cours des 5 dernières années, s'inspirant de groupes tels que IDLES et Clowns.
+
+        En 2019, ils ont enregistré leur premier album "Mutual Admiration Society" qui explore le skate punk à la manière californienne.
+        
+        Avec leur dernier album "Alive But Not Dead"  sorti en 2021 et le single "i'm always high when i see you smile" sorti en 2022, ils nous offrent une ambiance estivale revigorante, raffraichissante et dynamique.`,
+      url: '',
+      style: 'Punk Rock',
+      location: 'Valais',
+      video: 'https://www.youtube.com/embed/IlVeeiTKuMU',
+      image: '/bands/2023/4_fluffy_machine.png',
+      year: 2023,
+    },
+  ];
+
   return {
-    props: { sponsors, partners, donators },
+    props: { sponsors, partners, donators, bands },
   };
 }
 
@@ -81,9 +145,10 @@ type IProps = {
   sponsors: ISponsor[];
   partners: IPartner[];
   donators: IDonator[];
+  bands: IBand[];
 };
 
-const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
+const Home: NextPage<IProps> = ({ sponsors, partners, donators, bands }: IProps) => {
   const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -165,11 +230,35 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators }: IProps) => {
 
 
         {/* LINEUP */}
-        <div className="pb-16 pt-16 bg-white text-center p-8" id="lineup">
-          <div className="m-auto" style={{ maxWidth: "52rem" }}>
-            <p className="text-8xl mb-8 font-migra-bold font-bold">Line-up 2023</p>
-            <div className="pb-32 pt-32 text-xl">
-              <p><i>À décrouvrir bientot...</i></p>
+        <div className="pb-16 pt-16 bg-white p-8" id="lineup">
+          <div className="m-auto">
+            <p className="text-8xl mb-8 font-migra-bold font-bold text-center">Line-up 2023</p>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mt-4 px-8">
+              {bands.map((band: IBand, i: number) => (
+                <div key={i} className="h-full flex flex-col">
+                  <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-80 mb-8 w-full" ></div>
+                  <p className="text-xl font-migra-bold leading-6">{band.name}</p>
+                  <p className="text-sm mb-4 font-bold">{band.location} · {band.style}</p>
+                  <p className="text-xs font-light whitespace-pre-line">{band.description}</p>
+                  <div className="flex-grow"></div>
+                  {
+                    band.video && (
+                      <div className="mt-4">
+                        <div className="relative w-full h-32 grayscale">
+                          <iframe
+                            className="absolute top-0 left-0 w-full h-full"
+                            src={band.video}
+                            title="Video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      </div>
+                    )
+                  }
+                </div>
+              ))}
             </div>
           </div>
         </div>
