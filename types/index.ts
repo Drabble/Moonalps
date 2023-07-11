@@ -3,6 +3,7 @@ export interface IBand {
     description: string
     url: string
     style: string
+    location: string
     video: string
     image: string
     year: number

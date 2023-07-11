@@ -47,6 +47,18 @@ export async function getStaticProps() {
       principal: false,
     },
     {
+      name: 'Chabloz, Chiovini et Associés Sàrl',
+      logo: '/sponsors/chabloz.png',
+      url: 'https://www.pikbois.ch/',
+      principal: false,
+    },
+    {
+      name: 'Favez-énergie',
+      logo: '/sponsors/favez.png',
+      url: 'https://favez-energie.ch/',
+      principal: false,
+    },
+    {
       name: 'Capriati SA',
       logo: '/sponsors/Capriati.webp',
       url: 'https://capriati.ch/',

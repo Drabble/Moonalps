@@ -16,7 +16,7 @@ export async function getStaticProps({ params }: any) {
       props: {
         gallery: {
           credits: 'Crédits',
-          video: 'https://www.youtube.com/embed/gkQ1Lf4csXQ',
+          video: 'https://www.youtube.com/embed/gkQ1Lf4csXQ?autoplay=1',
           videos: ['https://youtube.com'],
           pictures: [
             '/galleries/2020/8_D6_A1305_4de941aade.jpg',
@@ -49,7 +49,7 @@ export async function getStaticProps({ params }: any) {
       props: {
         gallery: {
           credits: '',
-          video: 'https://www.youtube.com/embed/emBjFtxBWq8',
+          video: 'https://www.youtube.com/embed/emBjFtxBWq8?autoplay=1',
           videos: [],
           pictures: [
             '/galleries/2021/Moon_Laps_Festival_003_da52ce4214.jpg',
@@ -91,7 +91,7 @@ export async function getStaticProps({ params }: any) {
       props: {
         gallery: {
           credits: '',
-          video: 'https://www.youtube.com/embed/HF1DI37YaHM',
+          video: 'https://www.youtube.com/embed/HF1DI37YaHM?autoplay=1',
           videos: [],
           pictures: [
             '/galleries/2022/20220909-moonalps-200.jpg',

@@ -34,13 +34,10 @@ const About: NextPage = () => {
               <div style={{ maxWidth: "40rem" }}>
                 <p className="text-2xl font-migra-bold">Le MoonAlps, c’est quoi ?</p>
                 <p className="text-sm mb-2">
-                  La pandémie de COVID-19 ayant mis un frein à la musique live en 2020, un groupe d’amis a souhaité voir redémarrer la scène musicale locale et surtout celle touchant au rock. L’idée a rapidement mûri et un événement musical dans le village de Bursins, sur la Côte vaudoise, s’est concrétisé. C’est ainsi qu’en l’espace de quelques semaines, une première édition du MoonAlps Festival a vu le jour en septembre 2020.
-                </p>
-                <p className="text-sm mb-2">
-                  Étant donné l’engouement du public, des artistes et du staff, nous avions décidé de réitérer l’aventure d’une manière plus structurée en fondant l’association à but non lucratif "Les Amis du MoonAlps" le 7 mars 2021. L’association a ensuite lancé un concours nommé "Take The Moonstage" afin de permettre à des jeunes groupes (moins de 22 ans) d’ouvrir le festival et qui a permis d’accueillir Stockholm Syndrome et Warnöx, deux groupes suisses prometteurs qui ont su créer la petite étincelle nécessaire pour marquer le public lors des éditions 2021 et 2022.
+                  Si tu aimes le rock et la musique live, tu ne voudras pas manquer le MoonAlps Festival, le rendez-vous incontournable des amateurs de son et de convivialité. Ce festival est né de la passion d’un groupe d’amis qui ont voulu relancer la scène musicale locale après la crise du COVID-19. Depuis 2020, ils ont organisé trois éditions réussies dans le charmant village de Bursins, sur la Côte vaudoise, en mettant en avant des jeunes talents suisses.
                 </p>
                 <p className="text-sm mb-4">
-                  Après 3 éditions réussies, nous partons sur une année 2023 très spéciale. La MoonAlps vibe t’attend au bord du Léman à La Terrasse des Tilleuls pour un événement unique qui aura lieu le 12 août 2023 à Rolle. De plus, cette année ce ne sera pas la lune qui sera présente mais les Pléiades, une pluie d’étoiles filantes… ;)
+                  Cette année, le MoonAlps Festival change de décor et t’invite à venir vibrer au bord du Léman, à La Terrasse des Tilleuls, à Rolle. Le 12 août 2023, tu pourras profiter d’une journée exceptionnelle et d'une soirée sous les étoiles, avec un spectacle céleste en prime : les Pléiades, une pluie d’étoiles filantes. Ne rate pas cette occasion unique de vivre une expérience musicale et cosmique inoubliable !
                 </p>
                 <p className="text-2xl font-migra-bold mt-2">Faire une donation</p>
                 <p className="text-sm">Si tu veux soutenir l&apos;association, le festival et le projet MoonAlps dans sa totalité.</p>
