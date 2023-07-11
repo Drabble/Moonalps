@@ -231,12 +231,12 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators, bands }: IProps)
 
         {/* LINEUP */}
         <div className="pb-16 pt-16 bg-white p-8" id="lineup">
-          <div className="m-auto">
+          <div className="m-auto" style={{ maxWidth: "80rem" }}>
             <p className="text-8xl mb-8 font-migra-bold font-bold text-center">Line-up 2023</p>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mt-4 px-8">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mt-4 px-4 md:px-8 lg:px-16">
               {bands.map((band: IBand, i: number) => (
                 <div key={i} className="h-full flex flex-col">
-                  <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-80 mb-8 w-full" ></div>
+                  <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-64 mb-8 w-full" ></div>
                   <p className="text-xl font-migra-bold leading-6">{band.name}</p>
                   <p className="text-sm mb-4 font-bold">{band.location} · {band.style}</p>
                   <p className="text-xs font-light whitespace-pre-line">{band.description}</p>
@@ -244,7 +244,7 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators, bands }: IProps)
                   {
                     band.video && (
                       <div className="mt-4">
-                        <div className="relative w-full h-32 grayscale">
+                        <div className="relative w-full h-32">
                           <iframe
                             className="absolute top-0 left-0 w-full h-full"
                             src={band.video}
