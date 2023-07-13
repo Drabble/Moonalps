@@ -162,7 +162,7 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
           <div className="container m-auto relative mb-16">
             <p className="text-center text-8xl mt-28 mb-28 font-migra-bold break-all">GALERIE {year}</p>
             {gallery && (
-              <div>
+              <div className="m-auto" style={{ maxWidth: "80rem" }}>
                 <div className="flex flex-col gap-2 justify-center">
                   <div className="p-8 mb-8">
                     {gallery.video && (
