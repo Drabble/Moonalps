@@ -247,7 +247,7 @@ const Lineup: NextPage<IProps> = ({ bands }: IProps) => {
     <Layout onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
-          <title>Lineup 2021 Moonalps</title>
+          <title>Lineup {year}</title>
           <meta name="description" content="La lineup 2021 du Moonalps festival" />
         </Head>
 

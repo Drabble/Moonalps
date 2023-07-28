@@ -154,7 +154,7 @@ const Galleries: NextPage<IProps> = ({ gallery }: IProps) => {
     <Layout onScroll={(value) => setScroll(value)}>
       <div>
         <Head>
-          <title>Gallerie {year}</title>
+          <title>Galerie {year}</title>
           <meta name="description" content="Gallerie" />
         </Head>
 
