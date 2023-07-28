@@ -24,7 +24,7 @@ export async function getStaticProps() {
     },
     {
       name: 'Harley-Davidson',
-      logo: '/sponsors/Harley-Davidson.jpg',
+      logo: '/sponsors/Harley-Davidson.png',
       url: 'https://www.harley-davidson.com/ch',
       principal: false,
     },
