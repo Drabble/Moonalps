@@ -183,7 +183,7 @@ export async function getStaticProps({ params }: any) {
 
         Initialement formé sous le nom de Sinai Planum en 2018, le groupe a sorti  leur premier single "Burn the Hideaway" en 2019 et leur EP "Sauvage Café" début 2021.
         
-        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, et Loïc Cattin à la batterie.`,
+        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, Mathieu Meurin à la guitare, et Loïc Cattin à la batterie.`,
       url: '',
       style: 'Neo-grunge',
       location: 'Vaud',
