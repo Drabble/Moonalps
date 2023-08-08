@@ -6,6 +6,7 @@ export interface IBand {
     location: string
     video: string
     image: string
+    time?: string
     year: number
 }
 export interface IGallery {

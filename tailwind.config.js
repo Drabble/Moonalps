@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#000000",
         tertiary: "#222222",
         quaternary: "#eeeeee",
+        cell: '#297276',
         menu: "#0a0a0a",
         'dark': {
           100: '#FEF6E4',

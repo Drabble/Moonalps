@@ -73,6 +73,7 @@ export async function getStaticProps() {
   ];
 
   const bands: IBand[] = [
+
     {
       name: 'Don\'t Kill The Cow',
       description:
@@ -86,21 +87,7 @@ export async function getStaticProps() {
       location: 'Genève',
       video: 'https://www.youtube.com/embed/HlG-E8jPrYE',
       image: '/bands/2023/1_dont_kill_the_cow.png',
-      year: 2023,
-    },
-    {
-      name: 'nuum.',
-      description:
-        `nuum. est un groupe qui fusionne habilement le grunge et la pop pour créer un son captivant, hypnotique et énergique.
-
-        Initialement formé sous le nom de Sinai Planum en 2018, le groupe a sorti  leur premier single "Burn the Hideaway" en 2019 et leur EP "Sauvage Café" début 2021.
-        
-        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, Mathieu Meurin à la guitare, et Loïc Cattin à la batterie.`,
-      url: '',
-      style: 'Neo-grunge',
-      location: 'Vaud',
-      video: '',
-      image: '/bands/2023/2_nuum.png',
+      time: "16h30",
       year: 2023,
     },
     {
@@ -117,6 +104,7 @@ export async function getStaticProps() {
       location: 'Valais',
       video: 'https://www.youtube.com/embed/9ToEvKHn3q4',
       image: '/bands/2023/3_the_meseeks.png',
+      time: "17h45",
       year: 2023,
     },
     {
@@ -132,8 +120,25 @@ export async function getStaticProps() {
       location: 'Valais',
       video: 'https://www.youtube.com/embed/IlVeeiTKuMU',
       image: '/bands/2023/4_fluffy_machine.png',
+      time: "19h20",
       year: 2023,
     },
+    {
+      name: 'nuum.',
+      description:
+        `nuum. est un groupe qui fusionne habilement le grunge et la pop pour créer un son captivant, hypnotique et énergique.
+
+        Initialement formé sous le nom de Sinai Planum en 2018, le groupe a sorti  leur premier single "Burn the Hideaway" en 2019 et leur EP "Sauvage Café" début 2021.
+        
+        Après une année 2021 accomplie, le groupe se réinvente suite au départ du chanteur principal et se lance sous le nom de "nuum.", composé d'Alexandre Kawecki à la basse, Jan Waligorski au chant et à la guitare, Mathieu Meurin à la guitare, et Loïc Cattin à la batterie.`,
+      url: '',
+      style: 'Neo-grunge',
+      location: 'Vaud',
+      video: '',
+      image: '/bands/2023/2_nuum.png',
+      time: "21h00",
+      year: 2023,
+    }
   ];
 
   return {
@@ -238,7 +243,8 @@ const Home: NextPage<IProps> = ({ sponsors, partners, donators, bands }: IProps)
                 <div key={i} className="h-full flex flex-col">
                   <div style={{ backgroundImage: `url(${band.image})` }} className="bg-center bg-cover grayscale h-64 mb-8 w-full" ></div>
                   <p className="text-xl font-migra-bold leading-6">{band.name}</p>
-                  <p className="text-sm mb-4 font-bold">{band.location} · {band.style}</p>
+                  <p className="text-sm mb-1 font-bold">{band.location} · {band.style}</p>
+                  <div className="text-xs mb-4 font-bold text-white bg-cell rounded-md px-2 w-fit">{band.time}</div>
                   <p className="text-xs font-light whitespace-pre-line mb-4">{band.description}</p>
                   <div className="flex-grow"></div>
                   {
