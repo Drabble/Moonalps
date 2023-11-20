@@ -126,6 +126,41 @@ export async function getStaticProps({ params }: any) {
       },
     };
   }
+  if (params.year === '2023') {
+    return {
+      props: {
+        gallery: {
+          credits: '',
+          video: null,//'https://www.youtube.com/embed/gkQ1Lf4csXQ?autoplay=1',
+          videos: ['https://youtube.com'],
+          pictures: [
+            '/galleries/2023/DSC05898-min.jpg',
+            '/galleries/2023/DSC06041-min.jpg',
+            '/galleries/2023/DSC06090-min.jpg',
+            '/galleries/2023/DSC06115-min.jpg',
+            '/galleries/2023/DSC06187-min.jpg',
+            '/galleries/2023/DSC06276-min.jpg',
+            '/galleries/2023/DSC06312-min.jpg',
+            '/galleries/2023/DSC06354-min.jpg',
+            '/galleries/2023/DSC06363-min.jpg',
+            '/galleries/2023/DSC06394-min.jpg',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_1.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_12.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_14.jpg',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_15.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_16.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_19.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_20.JPEG',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_21.jpg',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_3.jpg',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_8.jpg',
+            '/galleries/2023/MoonAlps4_remerciements_insta(c)Lea_Michard_9.jpg',
+          ],
+          year: 2023,
+        },
+      },
+    };
+  }
   return {
     props: { gallery: null },
   };
@@ -133,7 +168,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { year: '2020' } }, { params: { year: '2021' } }, { params: { year: '2022' } }],
+    paths: [{ params: { year: '2020' } }, { params: { year: '2021' } }, { params: { year: '2022' } }, { params: { year: '2023' } }],
     fallback: false, // false or 'blocking'
   };
 }

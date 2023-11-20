@@ -113,6 +113,11 @@ const Layout: React.FC<IProps> = ({ onScroll, children, inverse = false }) => {
                   <div className={`z-50 dropdown-menu absolute hidden ${showMenu ? 'pt-2' : 'pt-4'}`}>
                     <ul className="list-none ml-0 bg-gray-100">
                       <li>
+                        <Link href={`/galleries/2023`}>
+                          <a className="block p-4 w-full">2023</a>
+                        </Link>
+                      </li>
+                      <li>
                         <Link href={`/galleries/2022`}>
                           <a className="block p-4 w-full">2022</a>
                         </Link>
