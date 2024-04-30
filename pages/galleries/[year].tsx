@@ -131,7 +131,7 @@ export async function getStaticProps({ params }: any) {
       props: {
         gallery: {
           credits: '',
-          video: null,//'https://www.youtube.com/embed/gkQ1Lf4csXQ?autoplay=1',
+          video: 'https://www.youtube.com/embed/nhwvrI-IG8s?autoplay=1',
           videos: ['https://youtube.com'],
           pictures: [
             '/galleries/2023/DSC05898-min.jpg',
